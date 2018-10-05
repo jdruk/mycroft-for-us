@@ -6,3 +6,10 @@ Docker's
 
 #### FreeRadius
 `docker run --name radius -p 1812-1813:1812-1813/udp freeradius/freeradius-server`
+
+##### Entre no Bash do container
+run exec -it < radius | postradius > bash
+
+##### Diagrama de classe
+(Formato DIA UML)
+arquivo:	uml_diagram_class.dia
