@@ -1,0 +1,81 @@
+<div class="ui grid container">
+  <div class="ten wide column">
+    <h2><%= t(".title")%></h2>
+    <div class="ui form">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <%= devise_error_messages! %>
+
+      <div class="field">  
+          <%= f.label :name %><br />
+          <%= f.text_field :name, autofocus: true, placeholder: "Digite seu nome" %>
+      </div>
+
+      <div class="ui small image">
+        <%= image_tag(@user.photo_url) if @user.photo? %>  
+      </div>
+
+      <div>
+        <%= f.label :photo %><br>
+        <%= f.file_field :photo %>
+        <%= f.hidden_field :photo_cache %>
+      </div>
+    
+      <% if policy(:user).edit? %>
+
+        <div class="field">
+          <%= f.label :email %><br />
+          <%= f.email_field :email, autofocus: true %>
+        </div>
+        
+        <div class="field">  
+            <%= f.label :user_group_id %><br />
+            <%= f.collection_select(:user_group_id, UserGroup.all, :id, :description,{},{class: 'ui dropdown'}) %>
+        </div>
+
+        <div class="field">  
+            <%= f.label :registration %><br />
+            <%= f.text_field :registration, placeholder: "Digite sua matricula" %>
+        </div>
+
+        <div class="field">  
+            <%= f.label :district_id %><br />
+            <%= f.collection_select(:district_id, District.all, :id, :name, {}, {class: 'ui dropdown'}) %>
+        </div>
+      <% end %>
+  
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+        <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+        <%= f.label :password %> <i>(Deixe em branco se você não quer mudar isto!)</i><br />
+        <%= f.password_field :password, autocomplete: "off" %>
+        <% if @minimum_password_length %>
+          <br />
+          <em><%= @minimum_password_length %> Mínimo de caracteres</em>
+        <% end %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+      </div>
+
+      <div class="field">
+        <%= f.label :current_password %> <i>(Nós precisamos que você coloque sua senha atual para confirmar as mudanças
+        )</i><br />
+        <%= f.password_field :current_password, autocomplete: "off" %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit t(".update"), class: 'ui button positive' %>
+      </div>
+    <% end %>
+
+    <%# button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'ui button red' %></p>
+
+    <%# link_to "Back", :back, class: 'ui button blue' %>
+    </div>
+  </div>
+</div>
+</br>

@@ -1,0 +1,10 @@
+<!-- Following Menu for user not logged in -->
+<div class="ui large top fixed no-hidden inverted menu">
+  <div class="ui container">
+    <%= link_to 'Inicio', root_path, class: "#{is_current_page?(root_path)} item" %>
+
+    <div class="right menu">
+      <%= link_to 'Entrar', new_user_session_path, class: "#{is_current_page?(new_user_session_path)} item" %>
+    </div>
+  </div>
+</div>

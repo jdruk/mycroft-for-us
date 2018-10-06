@@ -1,0 +1,51 @@
+<div class="ui centered grid container">
+  <div class="ten wide column">
+    <div class="ui two column middle aligned very relaxed stackable grid">
+      <div class="column">
+        <h2>Entrar</h2>
+        <hr>
+        <div class="ui form">
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'ui form'}) do |f| %>
+          <div class="field">
+            <%= f.label :email %>
+            <%= f.email_field :email, autofocus: true %>
+          </div>
+
+          <div class="field">
+            <%= f.label :password %>
+            <%= f.password_field :password, autocomplete: "off" %>
+          </div>
+
+          <% if devise_mapping.rememberable? -%>
+            <div class="inline field">
+              <%= f.check_box :remember_me %>
+              <%= f.label :remember_me %>
+            </div>
+          <% end -%>
+
+          <div class="actions">
+            <%= f.submit "Entrar", class: 'positive ui button' %>
+          </div>
+          <% end %>
+        </div>
+
+        <p></p>
+        <p></p>
+        <p></p>
+        <%# render "users/shared/links" %>
+      </div>
+      <div class="ui vertical divider">
+        Or
+      </div>
+      <div class="center aligned column">
+        
+          
+          <%= link_to new_user_registration_path, class:"ui big green labeled icon button" do %>
+
+          <i class="signup icon"></i> Cadastrar-se
+          <% end %>
+        
+      </div>
+    </div>
+  </div>
+</div>
