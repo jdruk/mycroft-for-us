@@ -1,0 +1,27 @@
+<%= form_with(model: plan_of_datum, local: true) do |form| %>
+  <% if plan_of_datum.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(plan_of_datum.errors.count, "error") %> prohibited this plan_of_datum from being saved:</h2>
+
+      <ul>
+      <% plan_of_datum.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :velocity_max_upload %>
+    <%= form.number_field :velocity_max_upload %>
+  </div>
+
+  <div class="field">
+    <%= form.label :velocity_max_download %>
+    <%= form.number_field :velocity_max_download %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

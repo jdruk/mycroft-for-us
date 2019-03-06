@@ -1,0 +1,2 @@
+class Concentrator < ApplicationRecord
+end

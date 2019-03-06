@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Login:</strong>
+  <%= @link.login %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @link.password %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @link.status %>
+</p>
+
+<p>
+  <strong>Type:</strong>
+  <%= @link.type %>
+</p>
+
+<%= link_to 'Edit', edit_link_path(@link) %> |
+<%= link_to 'Back', links_path %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Hostname:</strong>
+  <%= @concentrator.hostname %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @concentrator.address %>
+</p>
+
+<p>
+  <strong>Login:</strong>
+  <%= @concentrator.login %>
+</p>
+
+<p>
+  <strong>Password:</strong>
+  <%= @concentrator.password %>
+</p>
+
+<%= link_to 'Edit', edit_concentrator_path(@concentrator) %> |
+<%= link_to 'Back', concentrators_path %>

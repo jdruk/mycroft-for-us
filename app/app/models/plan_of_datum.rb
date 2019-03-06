@@ -1,0 +1,2 @@
+class PlanOfDatum < ApplicationRecord
+end

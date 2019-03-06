@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plan Of Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Velocity max upload</th>
+      <th>Velocity max download</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plan_of_data.each do |plan_of_datum| %>
+      <tr>
+        <td><%= plan_of_datum.velocity_max_upload %></td>
+        <td><%= plan_of_datum.velocity_max_download %></td>
+        <td><%= link_to 'Show', plan_of_datum %></td>
+        <td><%= link_to 'Edit', edit_plan_of_datum_path(plan_of_datum) %></td>
+        <td><%= link_to 'Destroy', plan_of_datum, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plan Of Datum', new_plan_of_datum_path %>
