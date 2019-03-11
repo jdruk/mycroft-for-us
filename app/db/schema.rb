@@ -10,10 +10,54 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_05_234510) do
+ActiveRecord::Schema.define(version: 2019_03_06_154338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "zip_code"
+    t.string "address"
+    t.string "number"
+    t.string "latitude"
+    t.string "longitude"
+    t.bigint "client_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_addresses_on_client_id"
+  end
+
+  create_table "clients", force: :cascade do |t|
+    t.string "name"
+    t.string "cpf"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "concentrators", force: :cascade do |t|
+    t.string "hostname"
+    t.string "address"
+    t.string "login"
+    t.string "password"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "links", force: :cascade do |t|
+    t.string "login"
+    t.string "password"
+    t.integer "status"
+    t.integer "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plan_of_data", force: :cascade do |t|
+    t.integer "velocity_max_upload"
+    t.integer "velocity_max_download"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -40,4 +84,5 @@ ActiveRecord::Schema.define(version: 2018_10_05_234510) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "addresses", "clients"
 end
