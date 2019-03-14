@@ -10,11 +10,7 @@ class User < ApplicationRecord
     end 
 
     def inactive_message 
-        if !approved? 
-          :not_approved 
-      else 
-          super # Use whatever other message 
-      end 
+        approved? ? super : :not_approved
     end
 
     def self.send_reset_password_instructions(attributes={})

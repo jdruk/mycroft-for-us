@@ -1,16 +1,25 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>App</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+	<head>
+		<title>App</title>
+		<%= csrf_meta_tags %>
+		<%= csp_meta_tag %>
+		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-
-    <%= yield :head %>
-  </head>
-  <body>
-    <%= yield %>
-  </body>
+		<%= yield :head %>
+	</head>
+	<body>
+		<%= render 'layouts/top_menu' %>
+		<div class="ui grid">
+			<div class="four wide column">
+				<%= render 'layouts/sidebar_menu' %>
+			</div>
+			<div  class="twelve wide column">
+				<div class="container">
+					<%= yield %>
+				</div>
+			</div>
+		</div>
+	</body>
 </html>

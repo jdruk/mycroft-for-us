@@ -1,0 +1,9 @@
+<div class="ui  labeled icon vertical left inverted menu">
+	<%= link_to root_path, class: "#{is_current_page?(root_path)} item" do  %>
+		<i class="home icon"></i>Inicio
+	<% end %>
+	
+	<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>
+		<i class="user circle icon"></i>Usuários
+	<% end %> 
+</div>
