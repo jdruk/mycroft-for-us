@@ -18,11 +18,8 @@ Caraterísticas:
 * Base de dados padrão - Postgresql
 * Totalmente responsivo
 
-#### Postgresql
-`docker run --name postradius -d -p 5432:5432 -e POSTGRES_PASSWORD=postradius postgres:9.4.19`
-
-##### Entre no Bash do container
-run exec -it postradius bash
+#### Wiki
+`Instalação e demais procedimentos acesse [AQUI](https://github.com/jdruk/mycroft-for-us/wiki/Instala%C3%A7%C3%A3o) 
 
 ##### UML
 ![Diagrama de classe](UML.png)
