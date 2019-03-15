@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
+        format.js
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
@@ -42,6 +43,7 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @user.update(user_params)
+        format.js 
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -61,6 +63,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def change_approved
+    @user = User.find params[:id]
+    @user.approved = !@user.approved
+    respond_to do |format|
+      if @user.save 
+        format.js { render  js: "change_status('##{@user.id}');", :status => 200}
+      end
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -69,6 +81,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.fetch(:user, {})
+      params.require(:user).permit(:id,:username, :email, :password, :password_confirmation,:encrypted_password,:name, :username, :role )
     end
 end

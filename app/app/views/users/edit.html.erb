@@ -1,6 +1,6 @@
-<h1>Editing User</h1>
+<h2>Editar Usuário</h2>
 
 <%= render 'form', user: @user %>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+<%= link_to 'Detalhes', @user, class: 'ui basic button' %> 
+<%= link_to 'Voltar', users_path, class: 'ui basic button'  %>

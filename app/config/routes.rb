@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   scope "/administrator" do 
   	resources :users
+    post 'user_change/:id', to: "users#change_approved", as: 'change_user'
   end
   
 end

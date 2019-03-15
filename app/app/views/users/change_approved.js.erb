@@ -1,0 +1,24 @@
+function change_cell(tr_user){
+	if(tr_user.hasClass('error')){
+		tr_user.removeClass('error');
+	} else {
+		tr_user.addClass('error');
+	}
+}
+
+function change_user_status(button){
+	if(button.hasClass('false')){
+		button.removeClass('false');
+		button.addClass('true')
+	} else {
+		button.removeClass('true');
+		button.addClass('false');
+	}
+}
+
+function change_status(user_id){
+	alert(user_id + "dD");
+	// change_cell($(user_id));
+	// change_user_status($(user_id+"_button"))
+}
+

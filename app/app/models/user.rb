@@ -13,6 +13,14 @@ class User < ApplicationRecord
         approved? ? super : :not_approved
     end
 
+    def status_login
+      approved 
+    end
+
+    def status_sanitized
+      status_login ? 'Ativado' : 'Desativado'
+    end 
+
     def self.send_reset_password_instructions(attributes={})
         recoverable = find_or_initialize_with_errors(reset_password_keys, attributes, :not_found)
         if !recoverable.approved?

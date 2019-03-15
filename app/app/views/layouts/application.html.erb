@@ -11,14 +11,12 @@
 	</head>
 	<body>
 		<%= render 'layouts/top_menu' %>
-		<div class="ui grid">
-			<div class="four wide column">
+		<div class="ui centered grid">
+			<div class="ui computer only large only tablet only one wide column">
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
-			<div  class="twelve wide column">
-				<div class="container">
-					<%= yield %>
-				</div>
+			<div  class="fifteen wide sixteen mobile column">
+				<%= yield %>
 			</div>
 		</div>
 	</body>

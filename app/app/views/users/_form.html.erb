@@ -1,17 +1,43 @@
-<%= form_with(model: user, local: true) do |form| %>
-  <% if user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
+<div class="ui left aligned segment form">
+  <%= form_with(model: user) do |form| %>
+  <% if user.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+    <ul>
       <% user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="field">  
+    <%= form.label :name %><br />
+    <%= form.text_field :name, required: true, autofocus: true, placeholder: "Digite o nome" %>
   </div>
-<% end %>
+
+  <div class="field">  
+    <%= form.label :email %><br />
+    <%= form.email_field :email, required: true, placeholder: "Digite seu melhor E-mail" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %><br />
+    <%= form.password_field :password, required: true, autocomplete: "off" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :password_confirmation %><br />
+    <%= form.password_field :password_confirmation, required: true, autocomplete: "off" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit  class:'ui green button' %>
+  </div>
+  <% end %>
+  </div>

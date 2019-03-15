@@ -1,25 +1,25 @@
 <p id="notice"><%= notice %></p>
+<div class="ui center aligned segment ">
+  <h1><i class="user icon"></i>Usuários</h1>
 
-<h1>Users</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
+  <table id="users" class="ui center aligned celled table ">
+    <thead>
       <tr>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <th><i class="address book icon"></i>Nome</th>
+        <th><i class="envelope icon"></i>Email</th>
+        <th><i class="newspaper icon"></i>Notas</th>
+        <th colspan="3" align="center" class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
 
-<br>
+    <tbody>
+      <%= render @users %>
+    </tbody>
+  </table>
 
-<%= link_to 'New User', new_user_path %>
+  <br>
+
+  <div id="new-user">
+    <%= link_to 'Novo Usuário', new_user_path, remote: true, class: 'ui basic teal button' %>
+  </div>
+</div>
