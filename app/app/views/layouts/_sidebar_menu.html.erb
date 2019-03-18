@@ -6,4 +6,16 @@
 	<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>
 		<i class="user circle icon"></i>Usuários
 	<% end %> 
+
+	<%= link_to clients_path, class: "#{is_current_page?(root_path)} item" do  %>
+		<i class="users circle icon"></i>Clientes
+	<% end %>
+
+	<%= link_to concentrators_path, class: "#{is_current_page?(root_path)} item" do  %>
+		<i class="cogs icon"></i>Concentradores
+	<% end %> 
+
+	<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+		<i class="download icon"></i>Planos de dados
+	<% end %>  
 </div>

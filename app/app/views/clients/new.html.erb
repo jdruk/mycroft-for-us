@@ -1,5 +1,6 @@
-<h1>New Client</h1>
+<div class="ui center aligned segment ">
+	<h1><i class="user icon">Novo Cliente</h1>
+	<%= render 'form', client: @client %>
 
-<%= render 'form', client: @client %>
-
-<%= link_to 'Back', clients_path %>
+	<%= link_to 'Voltar', clients_path, class: 'ui basic button' %>
+</div>

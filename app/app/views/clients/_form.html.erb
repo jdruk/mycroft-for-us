@@ -1,4 +1,4 @@
-<%= form_with(model: client, local: true) do |form| %>
+<%= form_with(model: client, local: true, class: 'ui form') do |form| %>
   <% if client.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
@@ -22,6 +22,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui green button' %>
   </div>
 <% end %>

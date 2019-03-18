@@ -1,13 +1,13 @@
 <p id="notice"><%= notice %></p>
+<div class="ui center aligned segment ">
+<h1><i class="users icon"></i>Clientes</h1>
 
-<h1>Clients</h1>
-
-<table>
+<table class="ui table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Cpf</th>
-      <th colspan="3"></th>
+      <th> <i class="user icon"></i>Nome</th>
+      <th><i class="key icon"></i>Cpf</th>
+      <th colspan="3" class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
     </tr>
   </thead>
 
@@ -16,9 +16,9 @@
       <tr>
         <td><%= client.name %></td>
         <td><%= client.cpf %></td>
-        <td><%= link_to 'Show', client %></td>
-        <td><%= link_to 'Edit', edit_client_path(client) %></td>
-        <td><%= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Informações', client, class: 'ui basic button' %></td>
+        <td><%= link_to 'Editar', edit_client_path(client), class: 'ui green basic button' %></td>
+        <td><%= link_to 'Excluir', client, class: 'ui red basic button', method: :delete, data: { confirm: 'Você tem certeza que deseja excluir o cliente?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +26,6 @@
 
 <br>
 
-<%= link_to 'New Client', new_client_path %>
+<%= link_to 'Adicionar Cliente', new_client_path, class: 'ui teal basic button' %>
+
+</div>
