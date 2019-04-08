@@ -15,6 +15,7 @@
 //= require jquery_ujs
 //= require activestorage
 //= require turbolinks
+//= require cocoon
 //= require_tree .
 
 function change_cell(tr_user){

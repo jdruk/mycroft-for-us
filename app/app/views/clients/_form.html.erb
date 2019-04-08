@@ -1,14 +1,15 @@
-<%= form_with(model: client, local: true, class: 'ui form') do |form| %>
+<div class="ui left aligned segment form">
+  <%= form_with(model: client, local: true) do |form| %>
   <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
 
-      <ul>
+    <ul>
       <% client.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
   <div class="field">
@@ -21,7 +22,21 @@
     <%= form.text_field :cpf %>
   </div>
 
-  <div class="actions">
-    <%= form.submit class: 'ui green button' %>
+  <div>
+    <%= link_to_add_association 'Adicionar Endereço', form, :addresses, form_name: 'form',
+    'data-association-insertion-method' => 'append', 'data-association-insertion-node' => "#addresses-patient ol", class: 'ui basic orange button' %>
   </div>
-<% end %>
+
+  <fieldset id="addresses-patient">
+    <ol>
+      <%= form.fields_for :addresses do |address| %>
+      <% render partial: 'address_fields', locals: { form: address} %>
+      <% end %>
+    </ol>
+  </fieldset>
+
+  <div class="actions">
+    <%= form.submit class: 'ui basic blue button' %>
+  </div>
+  <% end %>
+</div>

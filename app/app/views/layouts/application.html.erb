@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>App</title>
+		<title>Mycroft Provider</title>
 		<%= csrf_meta_tags %>
 		<%= csp_meta_tag %>
 		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -12,10 +12,10 @@
 	<body>
 		<%= render 'layouts/top_menu' %>
 		<div class="ui centered grid">
-			<div class="ui computer only large only tablet only one wide column">
+			<div class="ui computer only large only tablet only two wide column">
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
-			<div  class="fifteen wide sixteen mobile column">
+			<div  class="fourteen wide sixteen mobile column">
 				<%= yield %>
 			</div>
 		</div>

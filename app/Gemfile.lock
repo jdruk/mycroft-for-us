@@ -66,6 +66,7 @@ GEM
     chromedriver-helper (2.1.0)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    cocoon (1.2.12)
     coffee-rails (4.2.2)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0)
@@ -85,6 +86,7 @@ GEM
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
+    geocoder (1.5.1)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.1.0)
@@ -223,8 +225,10 @@ DEPENDENCIES
   cancancan
   capybara (>= 2.15, < 4.0)
   chromedriver-helper
+  cocoon
   coffee-rails (~> 4.2)
   devise
+  geocoder
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)

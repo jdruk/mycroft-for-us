@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @client.name %>
 </p>
 
@@ -9,6 +9,12 @@
   <strong>Cpf:</strong>
   <%= @client.cpf %>
 </p>
+
+<div class="ui segment">
+	<% @client.addresses.each do |address| %>
+		
+	<% end %>
+</div>
 
 <%= link_to 'Editar', edit_client_path(@client), class: 'ui basic button' %> 
 <%= link_to 'Voltar', clients_path, class: 'ui basic button' %>
