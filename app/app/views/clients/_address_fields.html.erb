@@ -1,12 +1,8 @@
-<script type="text/javascript">
-	
-</script>
-
 <li class="nested-fields">
 	<h4>Endereço</h4>
 	<div class="field">
 		<%= form.label :zip_code %>
-		<%= form.text_field :zip_code %>
+		<%= form.text_field :zip_code, onblur: 'searchCEP(this.id);' %>
 	</div>
 
 	<div class="field">
