@@ -1,5 +1,4 @@
 <script type="text/javascript">
-
   function searchCEP(id) {
     let element = $("#"+id);
     let cep = element.val().replace(/\D/g, '');
@@ -25,6 +24,7 @@
  }
 
 </script>
+
 <div class="ui left aligned segment form">
   <%= form_with(model: client, local: true) do |form| %>
   <% if client.errors.any? %>
@@ -39,22 +39,26 @@
   </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
+  <div class="fields">
+    <div class="eight wide  field">
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= form.label :cpf %>
-    <%= form.text_field :cpf %>
+    <div class="field">
+      <%= form.label :cpf %>
+      <%= form.text_field :cpf %>
+    </div>
   </div>
+  
 
-  <div>
+  <div style="margin-bottom: 1.5em;">
     <%= link_to_add_association 'Adicionar Endereço', form, :addresses, form_name: 'form',
-    'data-association-insertion-method' => 'append', 'data-association-insertion-node' => "#addresses-patient ol", class: 'ui basic orange button' %>
+    'data-association-insertion-method' => 'prepend', 'data-association-insertion-node' => "#addresses-patient ol", class: 'ui basic orange button' %>
   </div>
 
-  <fieldset id="addresses-patient">
+  <fieldset id="addresses-patient" style="margin-bottom: 1.5em;">
+
     <ol>
       <%= form.fields_for :addresses do |address| %>
       <% render partial: 'address_fields', locals: { form: address} %>
@@ -63,7 +67,7 @@
   </fieldset>
 
   <div class="actions">
-    <%= form.submit class: 'ui basic blue button' %>
+    <%= form.submit class: 'ui blue button' %>
   </div>
   <% end %>
 </div>
