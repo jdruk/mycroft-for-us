@@ -5,12 +5,18 @@ class Address < ApplicationRecord
   after_validation :geocode, if: :updated?
 
   def updated?
-  	address_changed? || city_changed?
+  	address_changed? || neighborhood_changed || city_changed? || state_changed?
   end
 
-
   def search_for
-  	[address, number, city, state].reject(&:empty?).join(',')
+  	[address, number,neighborhood,city, state].
+  		reject(&:nil?).
+  		reject(&:empty?).
+  		join(',')
+  end
+
+  def to_s
+  	search_for 
   end
 
 end
