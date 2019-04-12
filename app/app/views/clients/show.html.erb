@@ -13,8 +13,9 @@
 <div class="ui segment">
 	<% @client.addresses.each do |address| %>
 		<%= address %>
-		<%= link_to 'Links', root_path, class: 'ui right floated basic teal button' %> 
-		<button class="ui toggle right floated button" onclick="map(this)" data-referencer='<%= address.id %>'><i class="map marker alternate icon"></i>Mapa</button><br/>
+		<%= link_to 'Links', root_path, class: 'ui right floated basic teal button',  
+			'data-tooltip'=>"Links de internet do endereço" ,'data-position' => "top left", 'data-inverted'=>"" %> 
+		<button  data-tooltip="Vizualizar mapa" data-position="top left" data-inverted="" class="ui toggle right floated button" onclick="map(this)" data-referencer='<%= address.id %>'><i class="map marker alternate icon"></i>Mapa</button><br/>
 
 		<div id=<%= address.id %> style="width: 100%" class="ui hidden">
 			<iframe class="hidden content" width="100%" height="600" src="https://maps.google.com/maps?width=100%&amp;height=600&amp;hl=en&amp;q=1%20Grafton%20Street%2C%20Dublin%2C%20Ireland+(My%20Business%20Name)&amp;ie=UTF8&amp;t=&amp;z=14&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"><a href="https://www.maps.ie/map-my-route/">Draw map route</a>
@@ -24,8 +25,10 @@
 	<% end %>
 </div>
 
-<%= link_to 'Editar', edit_client_path(@client), class: 'ui basic button' %> 
-<%= link_to 'Voltar', clients_path, class: 'ui basic button' %>
+<%= link_to 'Editar', edit_client_path(@client), class: 'ui basic button',
+	'data-tooltip'=>"Editar informações do cliente" ,'data-position' => "top left", 'data-inverted'=>""%> 
+<%= link_to 'Voltar', clients_path, class: 'ui basic button',
+	'data-tooltip'=>"Voltar ao menu anterior" ,'data-position' => "top left", 'data-inverted'=>"" %>
 
 <script type="text/javascript">
 	$('.ui.hidden').hide();

@@ -16,9 +16,11 @@
       <tr>
         <td><%= client.name %></td>
         <td><%= client.cpf %></td>
-        <td><%= link_to 'Informações', client, class: 'ui basic button' %></td>
-        <td><%= link_to 'Editar', edit_client_path(client), class: 'ui green basic button' %></td>
-        <td><%= link_to 'Excluir', client, class: 'ui red basic button', method: :delete, data: { confirm: 'Você tem certeza que deseja excluir o cliente?' } %></td>
+        <td><%= link_to 'Informações', client, class: 'ui basic button',
+          'data-tooltip'=>"Informações do cliente" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Editar', edit_client_path(client), class: 'ui green basic button',
+          'data-tooltip'=>"Editar informações do cliente" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Excluir', client, class: 'ui red basic button', method: :delete,'data-tooltip'=>"Excluir cliente" ,'data-position' => "top left", 'data-inverted'=>"", data: { confirm: 'Você tem certeza que deseja excluir o cliente?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,6 +28,6 @@
 
 <br>
 
-<%= link_to 'Adicionar Cliente', new_client_path, class: 'ui teal basic button' %>
+<%= link_to 'Adicionar Cliente', new_client_path, class: 'ui teal basic button', 'data-tooltip'=>"Adicionar um novo cliente",'data-position' => "top left", 'data-inverted'=>"" %>
 
 </div>
