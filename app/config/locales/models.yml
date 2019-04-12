@@ -1,0 +1,37 @@
+pt-BR:
+    activerecord:
+      models:
+        address: Endereço
+        client: Cliente
+        concentrator: Concentrador
+        link: Link de dados
+        plan_of_datum: Plano de dados
+      attributes:
+        address: 
+          zip_code: CEP
+          address: Endereço
+          number: Número
+          client_id: Cliente
+          longitude: Longitude
+          latitude: Latitude
+          city: Cidade
+          state: Estado
+          neighborhood: Bairro
+          complement: Complemento
+        client:
+          name: Nome
+          cpf: CPF 
+        concentrator:
+          hostname: Nome do host
+          address: Endereço de conexão
+          login: Login 
+          password: Senha
+        link:
+          login: Login
+          password: Senha
+          status: Estado
+          type: Tipo
+        plan_of_datum:
+          name: Nome do Plano
+          velocity_max_upload:  Máximo Upload 
+          velocity_max_download: Máximo Download

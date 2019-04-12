@@ -69,6 +69,6 @@ class PlanOfDataController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_of_datum_params
-      params.require(:plan_of_datum).permit(:velocity_max_upload, :velocity_max_download)
+      params.require(:plan_of_datum).permit(:name, :velocity_max_upload, :velocity_max_download)
     end
 end

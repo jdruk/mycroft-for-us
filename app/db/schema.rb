@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_10_134346) do
+ActiveRecord::Schema.define(version: 2019_04_12_135517) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,6 +61,8 @@ ActiveRecord::Schema.define(version: 2019_04_10_134346) do
     t.integer "velocity_max_download"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.index ["name"], name: "index_plan_of_data_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|

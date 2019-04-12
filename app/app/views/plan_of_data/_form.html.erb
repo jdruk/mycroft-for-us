@@ -13,13 +13,25 @@
     <% end %>
 
     <div class="field">
-      <%= form.label :velocity_max_upload %>
-      <%= form.number_field :velocity_max_upload %>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
     </div>
-
+    
     <div class="field">
-      <%= form.label :velocity_max_download %>
-      <%= form.number_field :velocity_max_download %>
+      <fieldset>
+        <legend>Velocidade Máxima</legend>
+        <div class="fields">
+          <div class="eight wide field field">
+            <%= form.label :velocity_max_upload %>
+            <%= form.number_field :velocity_max_upload, min: 0 %>
+          </div>
+
+          <div class="eight wide field">
+            <%= form.label :velocity_max_download %>
+            <%= form.number_field :velocity_max_download, min: 0 %>
+          </div>
+        </div>
+      </fieldset>
     </div>
 
     <div class="actions">
