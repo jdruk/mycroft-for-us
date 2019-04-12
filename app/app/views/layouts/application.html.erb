@@ -16,8 +16,19 @@
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
 			<div  class="fourteen wide sixteen mobile column">
+				<%= render 'layouts/alert_messages' %>
 				<%= yield %>
 			</div>
 		</div>
 	</body>
+	<script type="text/javascript">
+		$('.message .close')
+		  .on('click', function() {
+		    $(this)
+		      .closest('.message')
+		      .transition('fade')
+		    ;
+		  })
+		;
+	</script>
 </html>

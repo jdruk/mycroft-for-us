@@ -1,14 +1,14 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Concentrators</h1>
+<h1><i class="server icon"></i>Concentradores</h1>
 
-<table>
+<table class="ui table ">
   <thead>
     <tr>
       <th>Hostname</th>
-      <th>Address</th>
+      <th>Endereço</th>
       <th>Login</th>
-      <th>Password</th>
+      <th>Senha</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,9 +20,13 @@
         <td><%= concentrator.address %></td>
         <td><%= concentrator.login %></td>
         <td><%= concentrator.password %></td>
-        <td><%= link_to 'Show', concentrator %></td>
-        <td><%= link_to 'Edit', edit_concentrator_path(concentrator) %></td>
-        <td><%= link_to 'Destroy', concentrator, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Informações', concentrator,
+          'data-tooltip'=>"Informações do concentrador" ,'data-position' => "top left", 'data-inverted'=>"",
+           class: 'ui grey basic button' %></td>
+        <td><%= link_to 'Editar', edit_concentrator_path(concentrator),
+          'data-tooltip'=>"Editar informações do concentrador" ,'data-position' => "top left", 'data-inverted'=>"",
+           class: 'ui green basic button' %></td>
+        <td><%= link_to 'Excluir', concentrator,'data-tooltip'=>"Excluir concentrador" ,'data-position' => "top left", 'data-inverted'=>"", class: 'ui red basic button', method: :delete, data: { confirm: 'Você realmente deseja excluir este concentrador?'} %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +34,5 @@
 
 <br>
 
-<%= link_to 'New Concentrator', new_concentrator_path %>
+<%= link_to 'Novo Concentrador', new_concentrator_path, class: 'ui teal basic button',
+  'data-tooltip'=>"Adicionar novo concentrador" ,'data-position' => "top left", 'data-inverted'=>"" %>
