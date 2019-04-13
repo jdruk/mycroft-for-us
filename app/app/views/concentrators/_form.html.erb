@@ -1,39 +1,76 @@
+<div class="ui basic modal">
+  <div class="ui icon header">
+    <i class="archive icon"></i>
+    Archive Old Messages
+  </div>
+  <div class="content">
+    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+  </div>
+  <div class="actions">
+    <div class="ui red basic cancel inverted button">
+      <i class="remove icon"></i>
+      No
+    </div>
+    <div class="ui green ok inverted button">
+      <i class="checkmark icon"></i>
+      Yes
+    </div>
+  </div>
+</div>
+
 <div class="ui left aligned segment form">
   <%= form_with(model: concentrator, local: true) do |form| %>
-    <% if concentrator.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(concentrator.errors.count, "error") %> prohibited this concentrator from being saved:</h2>
+  <% if concentrator.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(concentrator.errors.count, "error") %> prohibited this concentrator from being saved:</h2>
 
-        <ul>
-        <% concentrator.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-        </ul>
-      </div>
-    <% end %>
+    <ul>
+      <% concentrator.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
-    <div class="field">
+  <div class="fields">
+    <div class="eight wide field">
       <%= form.label :hostname %>
       <%= form.text_field :hostname %>
     </div>
+  </div>
 
-    <div class="field">
+  <div class="fields">
+     <div class="six wide field">
       <%= form.label :address %>
       <%= form.text_field :address %>
     </div>
 
-    <div class="field">
+    <div class="four wide field">
       <%= form.label :login %>
       <%= form.text_field :login %>
     </div>
 
-    <div class="field">
+    <div class="four wide field">
       <%= form.label :password %>
       <%= form.text_field :password %>
     </div>
+  </div>
+  
+  <div id="test_conection" class="field ui button">
+    Testar Conexão
+  </div>
 
-    <div class="actions">
-      <%= form.submit class: 'ui blue button' %>
-    </div>
+  <div class="actions">
+    <%= form.submit class: 'ui blue button' %>
+  </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $('#test_conection').click( function () {
+    $('.ui.basic.modal')
+      .modal('show');
+  });
+       
+ 
+</script>

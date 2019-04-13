@@ -1,31 +1,33 @@
-<p id="notice"><%= notice %></p>
-
 <h1><i class="server icon"></i>Concentradores</h1>
 
-<table class="ui table ">
+<table class="ui center aligned table ">
   <thead>
     <tr>
       <th>Hostname</th>
       <th>Endereço</th>
-      <th>Login</th>
-      <th>Senha</th>
-      <th colspan="3"></th>
+      <th  class="center aligned">Status</th>
+      <th  class="center aligned" colspan="3">Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @concentrators.each do |concentrator| %>
-      <tr>
+      <tr> 
         <td><%= concentrator.hostname %></td>
         <td><%= concentrator.address %></td>
-        <td><%= concentrator.login %></td>
-        <td><%= concentrator.password %></td>
+        <td class="center aligned">
+          <%if concentrator.online? %>
+            <i class="green circle large icon"></i>
+          <% else %>
+            <i class="red exclamation circle large icon"></i>
+          <% end %>
+        </td>
         <td><%= link_to 'Informações', concentrator,
           'data-tooltip'=>"Informações do concentrador" ,'data-position' => "top left", 'data-inverted'=>"",
            class: 'ui grey basic button' %></td>
         <td><%= link_to 'Editar', edit_concentrator_path(concentrator),
           'data-tooltip'=>"Editar informações do concentrador" ,'data-position' => "top left", 'data-inverted'=>"",
-           class: 'ui green basic button' %></td>
+           class: 'ui black basic button' %></td>
         <td><%= link_to 'Excluir', concentrator,'data-tooltip'=>"Excluir concentrador" ,'data-position' => "top left", 'data-inverted'=>"", class: 'ui red basic button', method: :delete, data: { confirm: 'Você realmente deseja excluir este concentrador?'} %></td>
       </tr>
     <% end %>
