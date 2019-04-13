@@ -16,6 +16,7 @@
 //= require activestorage
 //= require turbolinks
 //= require cocoon
+//= require plotly
 //= require_tree .
 
 function change_cell(tr_user){
