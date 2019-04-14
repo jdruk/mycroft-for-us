@@ -1,4 +1,5 @@
 <div id="chart"></div>
+<div id='tet'></div>
 
 <p>
   <strong>Hostname:</strong>
@@ -24,17 +25,26 @@
 <%= link_to 'Voltar', concentrators_path, class: 'ui basic button' %>
 
 <script type="text/javascript">
-	function getData() {
-        return Math.random();
-    }
+function rand() {
+  return Math.random();
+}
 
-    Plotly.plot('chart',[{
-        y:[getData()],
-        type:'line'
-    }]);
+Plotly.plot('chart', [{
+  y: [1,2,3].map(rand)
+}, {
+  y: [1,2,3].map(rand)
+}]);
 
-    setInterval(function() {
-    	Plotly.extendTraces('chart', { y: [[getData()]] }, [0])
-    }, 200);
+var cnt = 0;
+
+var interval = setInterval(function() {
+  cnt++;
+  Plotly.extendTraces('chart', {
+    y: [[5], [30]]
+  }, [0, 1])
+
+  $('#tet').text((cnt));
+  if(cnt === 100) clearInterval(interval);
+}, 300);
 
 </script>
