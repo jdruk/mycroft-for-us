@@ -1,19 +1,19 @@
 <div class="ui basic modal">
   <div class="ui icon header">
     <i class="archive icon"></i>
-    Archive Old Messages
+    Alerta!!! 
   </div>
-  <div class="content">
-    <p>Your inbox is getting full, would you like us to enable automatic archiving of old messages?</p>
+  <div class="center aligned content">
+    <p id="content_modal"></p>
   </div>
   <div class="actions">
     <div class="ui red basic cancel inverted button">
       <i class="remove icon"></i>
-      No
+      Falha
     </div>
     <div class="ui green ok inverted button">
       <i class="checkmark icon"></i>
-      Yes
+      OK
     </div>
   </div>
 </div>
@@ -68,9 +68,35 @@
 
 <script type="text/javascript">
   $('#test_conection').click( function () {
-    $('.ui.basic.modal')
-      .modal('show');
-  });
-       
- 
+    hostname = $('#concentrator_hostname').val();
+    address = $('#concentrator_address').val();
+    login = $('#concentrator_login').val();
+    password = $('#concentrator_password').val();
+
+    $.post("<%= test_concentrator_path %>",{
+        hostname: hostname,
+        address: address,
+        login: login,
+        password: password})
+        .done(function(data){
+          console.log(data.message[0][0].address);
+          $("#content_modal").html("Conexão efetuada com sucesso! Concentrador possue os seguintes endereços: </br>");
+          data.message[0].map(function(item){
+            if(item.address){
+              $("#content_modal").append(item.address + "<br/>");
+            }
+          });
+          
+          $(".actions").html("<div class='actions'><div class='ui green basic cancel inverted button'><i class='checkmark icon'></i>Sucesso</div></div>");
+          })
+        .fail(function(data){
+           console.log(data);
+          $("#content_modal").html("<br/>Por favor, verifique se os dados estão corretos, se o concentrador estar ligado ou se há conexão entre este servidor e o concentrador!");
+          $(".actions").html("<div class='actions'><div class='ui red basic cancel inverted button'><i class='remove icon'></i>Falha</div></div>");})
+        .always(function(){
+          $('.ui.basic.modal')
+              .modal('show');
+        });
+
+  });   
 </script>

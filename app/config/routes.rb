@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   
   resources :concentrators
+  post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'
+
   resources :plan_of_data
 
   resources :clients do
