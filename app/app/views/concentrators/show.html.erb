@@ -1,5 +1,19 @@
-<div id="chart"></div>
-<div id='tet'></div>
+<% set_current_concentrator(@concentrator) %>
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column" >
+      <div id="chart" class="chart"></div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight wide column" >
+      <div id="cpu" ></div>
+    </div>
+    <div class="eight wide column">
+      <div id="memory" ></div>
+    </div>
+  </div>
+</div>
 
 <p>
   <strong>Hostname:</strong>
@@ -25,26 +39,39 @@
 <%= link_to 'Voltar', concentrators_path, class: 'ui basic button' %>
 
 <script type="text/javascript">
-function rand() {
-  return Math.random();
-}
 
-Plotly.plot('chart', [{
-  y: [1,2,3].map(rand)
-}, {
-  y: [1,2,3].map(rand)
-}]);
+  // Init charts
+  Plotly.plot('chart', [{
+    y: [0],
+    name: 'Entrada'
+  }, {
+    y: [0],
+    name: 'Saída'
+  }]);
 
-var cnt = 0;
+  Plotly.plot('cpu', [{values: [0,0], labels: ['Livre', 'Em uso'], type: 'pie'}], {height: 400, width: 500});
+  Plotly.plot('memory', [{values: [0,0], labels: ['Livre', 'Em uso'], type: 'pie'}], {height: 400, width: 500});
 
-var interval = setInterval(function() {
-  cnt++;
-  Plotly.extendTraces('chart', {
-    y: [[5], [30]]
-  }, [0, 1])
+  var interval = setInterval(function() {
+    $.post("<%= info_concentrator_path %>",{
+      id: 5})
+    .done(function(data){
+      cpu_free = 100 - data.cpu_and_memory[0]['cpu-load'];
+      cpu_use =  data.cpu_and_memory[0]['cpu-load'];
 
-  $('#tet').text((cnt));
-  if(cnt === 100) clearInterval(interval);
-}, 30000);
+      memory_free = data.cpu_and_memory[0]['free-memory'];
+      memory_use = data.cpu_and_memory[0]['total-memory'] - data.cpu_and_memory[0]['free-memory'];
+
+      network_rx = bits_to_bytes(data.network[0]['rx-bits-per-second']);
+      network_tx = bits_to_bytes(data.network[0]['tx-bits-per-second']);
+
+      Plotly.restyle('cpu', 'values', [[cpu_free, cpu_use]]);
+      Plotly.restyle('memory', 'values',[[memory_free,memory_use]]);
+
+      Plotly.extendTraces('chart', {
+        y: [[network_rx], [network_tx]]
+      }, [0, 1]);
+    });
+  }, 300);
 
 </script>

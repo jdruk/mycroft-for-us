@@ -1,14 +1,21 @@
-require 'mtik'
-
 class ConcentratorsController < ApplicationController
+
   before_action :set_concentrator, only: [:show, :edit, :update, :destroy]
 
   def test_concentrator
-    response =  test_connection params
-    puts response
-    puts response.inspect
+    concentrator = Concentrator.new hostname: params[:hostname],
+                    address: params[:address],
+                    login: params[:login],
+                    password: params[:password]
+
     respond_to do |format|
-      format.json { render json: response.to_json, status: response[:status] }
+      format.json { render json: concentrator.test_conection.to_json, status: concentrator.test_conection[:status] }
+    end
+  end
+
+  def concentrator_info
+    respond_to do |format|
+       format.json { render json: current_concentrator.info_concentrator.to_json, status: current_concentrator.info_concentrator[:status] }
     end
   end
 
@@ -81,19 +88,5 @@ class ConcentratorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def concentrator_params
       params.require(:concentrator).permit(:hostname, :address, :login, :password)
-    end
-
-    def test_connection(params)
-      hostname = params[:hostname]
-      address = params[:address]
-      login = params[:login]
-      password = params[:password]
-
-      begin
-        mk = MTik::command(host: address, user: login, password: password, command: '/ip/address/print', conn_timeout: 5)
-        {message: mk, success: false, status: :ok}
-      rescue Exception=> e
-        {message: e.message , success: false, status: :error}
-      end
     end
 end

@@ -6,7 +6,7 @@
   <div class="center aligned content">
     <p id="content_modal"></p>
   </div>
-  <div class="actions">
+  <div id='controles' class="actions">
     <div class="ui red basic cancel inverted button">
       <i class="remove icon"></i>
       Falha
@@ -35,68 +35,81 @@
   <div class="fields">
     <div class="eight wide field">
       <%= form.label :hostname %>
-      <%= form.text_field :hostname %>
+      <%= form.text_field :hostname, class: 'uppercase', required: true %>
     </div>
   </div>
 
   <div class="fields">
-     <div class="six wide field">
-      <%= form.label :address %>
-      <%= form.text_field :address %>
-    </div>
-
-    <div class="four wide field">
-      <%= form.label :login %>
-      <%= form.text_field :login %>
-    </div>
-
-    <div class="four wide field">
-      <%= form.label :password %>
-      <%= form.text_field :password %>
-    </div>
+   <div class="six wide field">
+    <%= form.label :address %>
+    <%= form.text_field :address, required: true %>
   </div>
-  
+
+  <div class="four wide field">
+    <%= form.label :login %>
+    <%= form.text_field :login, required: true %>
+  </div>
+
+  <div class="four wide field">
+    <%= form.label :password %>
+    <%= form.password_field :password, required: true %>
+  </div>
+</div>
+
+<div class="fields">
   <div id="test_conection" class="field ui button">
     Testar Conexão
   </div>
-
-  <div class="actions">
-    <%= form.submit class: 'ui blue button' %>
+  <div id="status">  
   </div>
-  <% end %>
+</div>
+
+<div class="actions">
+  <%= form.submit class: 'ui blue button' %>
+</div>
+<% end %>
 </div>
 
 <script type="text/javascript">
-  $('#test_conection').click( function () {
-    hostname = $('#concentrator_hostname').val();
-    address = $('#concentrator_address').val();
-    login = $('#concentrator_login').val();
-    password = $('#concentrator_password').val();
+  function test_fail(){
+    $("#content_modal").html("<br/>Por favor, verifique se os dados estão corretos, se o concentrador estar ligado ou se há conexão entre este servidor e o concentrador!");
+    $("#controles").html("<div class='actions'><div class='ui red basic cancel inverted button'><i class='remove icon'></i>Falha</div></div>");
+    $('#status').html($("<div class='ui red basic button' styles='margin-left:2em;' ></div>").text("Falha"));
+  }
 
-    $.post("<%= test_concentrator_path %>",{
-        hostname: hostname,
-        address: address,
-        login: login,
-        password: password})
-        .done(function(data){
-          console.log(data.message[0][0].address);
-          $("#content_modal").html("Conexão efetuada com sucesso! Concentrador possue os seguintes endereços: </br>");
-          data.message[0].map(function(item){
-            if(item.address){
-              $("#content_modal").append(item.address + "<br/>");
-            }
-          });
-          
-          $(".actions").html("<div class='actions'><div class='ui green basic cancel inverted button'><i class='checkmark icon'></i>Sucesso</div></div>");
-          })
-        .fail(function(data){
-           console.log(data);
-          $("#content_modal").html("<br/>Por favor, verifique se os dados estão corretos, se o concentrador estar ligado ou se há conexão entre este servidor e o concentrador!");
-          $(".actions").html("<div class='actions'><div class='ui red basic cancel inverted button'><i class='remove icon'></i>Falha</div></div>");})
-        .always(function(){
-          $('.ui.basic.modal')
-              .modal('show');
-        });
+  function test_sucess(data){
+    $("#content_modal").html("Conexão efetuada com sucesso! Concentrador possue os seguintes endereços: </br>");
+    data.message[0].map(function(item){
+    if(item.address){
+      $("#content_modal").append(item.address + "<br/>");
+    }
+  });
 
-  });   
+    $("#controles").html("<div class='actions'><div class='ui green basic cancel inverted button'><i class='checkmark icon'></i>Sucesso</div></div>");
+    $('#status').html($("<div class='ui green basic button' styles='margin-left:2em;' ></div>").text("Sucesso"));
+ }
+
+ $('#test_conection').click( function () {
+  hostname = $('#concentrator_hostname').val();
+  address = $('#concentrator_address').val();
+  login = $('#concentrator_login').val();
+  password = $('#concentrator_password').val();
+
+  $.post("<%= test_concentrator_path %>",{
+    hostname: hostname,
+    address: address,
+    login: login,
+    password: password})
+  .done(function(data){
+    test_sucess(data);
+  })
+  .fail(function(data){
+    test_fail();
+  })
+  .always(function(){
+    $('.ui.basic.modal')
+    .modal('show');
+  });
+
+});   
 </script>

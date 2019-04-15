@@ -17,3 +17,7 @@
 #addresses-patient hr:last-of-type {
 	display: none;
 }
+
+.uppercase {
+	text-transform: uppercase;
+}

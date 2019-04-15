@@ -43,3 +43,7 @@ function change_status(user_id){
 	change_cell($(user_id));
 	change_user_status($(user_id+"_button"));
 }
+
+function bits_to_bytes(bits){
+	return bits/8;
+}

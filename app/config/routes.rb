@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   
   resources :concentrators
   post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'
+  post 'info_concentrator/:id', to: "concentrators#concentrator_info", as: 'info_concentrator'
 
   resources :plan_of_data
 
