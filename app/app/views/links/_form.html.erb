@@ -1,37 +1,44 @@
-<%= form_with(model: link, local: true) do |form| %>
+<div class="ui left aligned segment form">
+  <%= form_with(model: [@client, @address, link], local: true) do |form| %>
   <% if link.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(link.errors.count, "error") %> prohibited this link from being saved:</h2>
 
-      <ul>
+    <ul>
       <% link.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :login %>
-    <%= form.text_field :login %>
+  <div class="fields">
+    <div class="eight wide field">
+      <%= form.label :login %>
+      <%= form.text_field :login, required: true %>
+    </div>
+
+    <div class="eight wide field">
+      <%= form.label :password %>
+      <%= form.text_field :password, required: true %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password %>
-  </div>
+  <div class="fields">
+    <div class="eight wide field">
+      <%= form.label :status %>
+      <%= form.number_field :status, required: true %>
+    </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
+    <div class="eight wide field">
+      <%= form.label :type_link %>
+      <%= form.number_field :type_link, required: true %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :type %>
-    <%= form.number_field :type %>
-  </div>
+  
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui blue button' %>
   </div>
-<% end %>
+  <% end %>
+</div>

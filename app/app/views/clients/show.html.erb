@@ -11,7 +11,7 @@
 <div class="ui segment">
 	<% @client.addresses.each do |address| %>
 		<%= address %>
-		<%= link_to 'Links', root_path, class: 'ui right floated basic teal button',  
+		<%= link_to 'Links', client_address_links_path(@client, address), class: 'ui right floated basic teal button',  
 			'data-tooltip'=>"Links de internet do endereço" ,'data-position' => "top left", 'data-inverted'=>"" %> 
 		<button  data-tooltip="Vizualizar mapa" data-position="top left" data-inverted="" class="ui toggle right floated button" onclick="map(this)" data-referencer='<%= address.id %>'><i class="map marker alternate icon"></i>Mapa</button><br/>
 

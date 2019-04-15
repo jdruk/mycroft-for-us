@@ -1,3 +1,11 @@
+<div class="ui grid">
+  <div class="row">
+    <div class="sixteen wide column" >
+      <div id="chart" class="chart"></div>
+    </div>
+  </div>
+</div>
+
 <p>
   <strong>Login:</strong>
   <%= @link.login %>
@@ -15,8 +23,18 @@
 
 <p>
   <strong>Type:</strong>
-  <%= @link.type %>
+  <%= @link.type_link %>
 </p>
+ 
+<script type="text/javascript">
+	 Plotly.plot('chart', [{
+    y: [0],
+    name: 'Entrada'
+  }, {
+    y: [0],
+    name: 'Saída'
+  }], {title: 'Entrada e Saída de Dados'});
+</script>
 
-<%= link_to 'Edit', edit_link_path(@link) %> |
-<%= link_to 'Back', links_path %>
+<%= link_to 'Editar', edit_client_address_link_path(@client, @address, @link), class: 'ui basic button' %> 
+<%= link_to 'Voltar', client_address_links_path, class: 'ui basic button' %>

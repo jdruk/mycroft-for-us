@@ -2,5 +2,6 @@
 
 <%= render 'form', link: @link %>
 
-<%= link_to 'Show', @link %> |
-<%= link_to 'Back', links_path %>
+<%= link_to 'Show', [@client, @address, @link] %> |
+<%= link_to 'Back', client_address_links_path(@client, @address
+) %>

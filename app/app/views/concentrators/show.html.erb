@@ -39,7 +39,6 @@
 <%= link_to 'Voltar', concentrators_path, class: 'ui basic button' %>
 
 <script type="text/javascript">
-
   // Init charts
   Plotly.plot('chart', [{
     y: [0],
@@ -47,15 +46,19 @@
   }, {
     y: [0],
     name: 'Saída'
-  }]);
+  }], {title: 'Entrada e Saída de Dados'});
 
-  Plotly.plot('cpu', [{values: [0,0], labels: ['Livre', 'Em uso'], type: 'pie'}], {height: 400, width: 500});
-  Plotly.plot('memory', [{values: [0,0], labels: ['Livre', 'Em uso'], type: 'pie'}], {height: 400, width: 500});
+  Plotly.plot('cpu', [{values: [0,0], labels: [ 'Em uso', 'Livre'], type: 'pie'}], 
+    { title: 'CPU', height: 400, width: 500});
+  Plotly.plot('memory', [{values: [0,0], labels: ['Livre', 'Em uso'], type: 'pie'}], 
+    {title: 'Memória', height: 400, width: 500});
 
   var interval = setInterval(function() {
     $.post("<%= info_concentrator_path %>",{
       id: 5})
     .done(function(data){
+      
+
       cpu_free = 100 - data.cpu_and_memory[0]['cpu-load'];
       cpu_use =  data.cpu_and_memory[0]['cpu-load'];
 
@@ -65,7 +68,7 @@
       network_rx = bits_to_bytes(data.network[0]['rx-bits-per-second']);
       network_tx = bits_to_bytes(data.network[0]['tx-bits-per-second']);
 
-      Plotly.restyle('cpu', 'values', [[cpu_free, cpu_use]]);
+      Plotly.restyle('cpu', 'values', [[ cpu_use, cpu_free]]);
       Plotly.restyle('memory', 'values',[[memory_free,memory_use]]);
 
       Plotly.extendTraces('chart', {

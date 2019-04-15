@@ -1,31 +1,34 @@
-<h1>Links</h1>
+<div class="ui aligned segment ">
+  <h1>Links</h1>
 
-<table class="ui center aligned table">
-  <thead>
-    <tr>
-      <th>Login</th>
-      <th>Password</th>
-      <th>Status</th>
-      <th>Type</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+  <table class="ui center aligned table">
+    <thead>
+      <tr>
+        <th>Login</th>
+        <th>Password</th>
+        <th>Status</th>
+        <th>Type</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @links.each do |link| %>
+    <tbody>
+      <% @links.each do |link| %>
       <tr>
         <td><%= link.login %></td>
         <td><%= link.password %></td>
         <td><%= link.status %></td>
-        <td><%= link.type %></td>
-        <td><%= link_to 'Show', link %></td>
-        <td><%= link_to 'Edit', edit_link_path(link) %></td>
-        <td><%= link_to 'Destroy', link, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link.type_link %></td>
+        <td><%= link_to 'Detalhes', [@client, @address, link], 'data-tooltip'=>"Informações do link" ,'data-position' => "top left", 'data-inverted'=>"",class: 'ui grey basic button' %></td>
+        <td><%= link_to 'Editar', edit_client_address_link_path(@client, @address,link), 'data-tooltip'=>"Editar informações do link" ,'data-position' => "top left", 'data-inverted'=>"",
+           class: 'ui black basic button' %></td>
+        <td><%= link_to 'Excluir', [@client, @address, link], 'data-tooltip'=>"Excluir link" ,'data-position' => "top left", 'data-inverted'=>"", class: 'ui red basic button', method: :delete, data: { confirm: 'Você realmente deseja excluir este links?'} %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'New Link', new_link_path %>
+  <%= link_to 'Novo Link', new_client_address_link_path(@client, @address), class: 'ui teal basic button', 'data-tooltip'=>"Adicionar um novo link ao endereço",'data-position' => "top left", 'data-inverted'=>"" %>
+</div>

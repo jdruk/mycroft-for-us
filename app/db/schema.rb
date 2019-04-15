@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_12_135517) do
+ActiveRecord::Schema.define(version: 2019_04_15_135051) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,9 +51,11 @@ ActiveRecord::Schema.define(version: 2019_04_12_135517) do
     t.string "login"
     t.string "password"
     t.integer "status"
-    t.integer "type"
+    t.integer "type_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "address_id", null: false
+    t.index ["address_id"], name: "index_links_on_address_id"
   end
 
   create_table "plan_of_data", force: :cascade do |t|
@@ -91,4 +93,5 @@ ActiveRecord::Schema.define(version: 2019_04_12_135517) do
   end
 
   add_foreign_key "addresses", "clients"
+  add_foreign_key "links", "addresses"
 end

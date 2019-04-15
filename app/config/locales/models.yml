@@ -30,7 +30,7 @@ pt-BR:
           login: Login
           password: Senha
           status: Estado
-          type: Tipo
+          type_link: Tipo
         plan_of_datum:
           name: Nome do Plano
           velocity_max_upload:  Máximo Upload 

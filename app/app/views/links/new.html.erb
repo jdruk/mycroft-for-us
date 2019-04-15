@@ -1,5 +1,7 @@
-<h1>New Link</h1>
+<div class="ui center aligned segment ">
+	<h1>Novo Link</h1>
 
-<%= render 'form', link: @link %>
+	<%= render 'form', link: @link %>
 
-<%= link_to 'Back', links_path %>
+	<%= link_to 'Voltar', client_address_links_path(@client, @address), class: 'ui basic button' %>
+</div>
