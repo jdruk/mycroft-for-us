@@ -3,9 +3,9 @@
 # Table name: plan_of_data
 #
 #  id                    :bigint(8)        not null, primary key
-#  name                  :string
-#  velocity_max_download :integer
-#  velocity_max_upload   :integer
+#  name                  :string           not null
+#  velocity_max_download :integer          not null
+#  velocity_max_upload   :integer          not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

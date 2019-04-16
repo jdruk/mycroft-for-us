@@ -3,8 +3,8 @@
 # Table name: clients
 #
 #  id         :bigint(8)        not null, primary key
-#  cpf        :string
-#  name       :string
+#  cpf        :string           not null
+#  name       :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

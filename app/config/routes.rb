@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  resources :address_ranges
   resources :concentrators
   post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'
   post 'info_concentrator/:id', to: "concentrators#concentrator_info", as: 'info_concentrator'

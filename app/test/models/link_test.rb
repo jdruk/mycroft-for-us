@@ -5,8 +5,8 @@
 #  id         :bigint(8)        not null, primary key
 #  login      :string
 #  password   :string
-#  status     :integer
-#  type_link  :integer
+#  status     :integer          default(0), not null
+#  type_link  :integer          default(0), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  address_id :bigint(8)        not null

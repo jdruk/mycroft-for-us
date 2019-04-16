@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @address_range.name %>
+</p>
+
+<p>
+  <strong>Start range:</strong>
+  <%= @address_range.start_range %>
+</p>
+
+<p>
+  <strong>End range:</strong>
+  <%= @address_range.end_range %>
+</p>
+
+<p>
+  <strong>Concentrator:</strong>
+  <%= @address_range.concentrator %>
+</p>
+
+<%= link_to 'Edit', edit_address_range_path(@address_range) %> |
+<%= link_to 'Back', address_ranges_path %>

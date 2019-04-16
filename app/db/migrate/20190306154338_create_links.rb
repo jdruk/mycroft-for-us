@@ -3,8 +3,8 @@ class CreateLinks < ActiveRecord::Migration[5.2]
     create_table :links do |t|
       t.string :login
       t.string :password
-      t.integer :status
-      t.integer :type
+      t.integer :status, null: false, default: 0
+      t.integer :type, null: false, default: 0
 
       t.timestamps
     end

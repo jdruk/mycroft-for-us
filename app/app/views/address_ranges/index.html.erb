@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Address Ranges</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Start range</th>
+      <th>End range</th>
+      <th>Concentrator</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @address_ranges.each do |address_range| %>
+      <tr>
+        <td><%= address_range.name %></td>
+        <td><%= address_range.start_range %></td>
+        <td><%= address_range.end_range %></td>
+        <td><%= address_range.concentrator %></td>
+        <td><%= link_to 'Show', address_range %></td>
+        <td><%= link_to 'Edit', edit_address_range_path(address_range) %></td>
+        <td><%= link_to 'Destroy', address_range, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Address Range', new_address_range_path %>

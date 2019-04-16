@@ -3,10 +3,10 @@
 # Table name: concentrators
 #
 #  id         :bigint(8)        not null, primary key
-#  address    :string
-#  hostname   :string
-#  login      :string
-#  password   :string
+#  address    :string           not null
+#  hostname   :string           not null
+#  login      :string           not null
+#  password   :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

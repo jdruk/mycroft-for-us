@@ -10,39 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_135051) do
+ActiveRecord::Schema.define(version: 2019_04_16_154838) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "address_ranges", force: :cascade do |t|
+    t.string "name", null: false
+    t.inet "start_range", null: false
+    t.inet "end_range", null: false
+    t.bigint "concentrator_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concentrator_id"], name: "index_address_ranges_on_concentrator_id"
+  end
+
   create_table "addresses", force: :cascade do |t|
-    t.string "zip_code"
-    t.string "address"
+    t.string "zip_code", null: false
+    t.string "address", null: false
     t.string "number"
     t.bigint "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.decimal "latitude"
-    t.decimal "longitude"
-    t.string "city"
-    t.string "state"
-    t.string "neighborhood"
-    t.string "complement"
+    t.decimal "latitude", null: false
+    t.decimal "longitude", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "neighborhood", null: false
+    t.string "complement", null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
   create_table "clients", force: :cascade do |t|
-    t.string "name"
-    t.string "cpf"
+    t.string "name", null: false
+    t.string "cpf", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "concentrators", force: :cascade do |t|
-    t.string "hostname"
-    t.string "address"
-    t.string "login"
-    t.string "password"
+    t.string "hostname", null: false
+    t.string "address", null: false
+    t.string "login", null: false
+    t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -50,8 +60,8 @@ ActiveRecord::Schema.define(version: 2019_04_15_135051) do
   create_table "links", force: :cascade do |t|
     t.string "login"
     t.string "password"
-    t.integer "status"
-    t.integer "type_link"
+    t.integer "status", default: 0, null: false
+    t.integer "type_link", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id", null: false
@@ -59,11 +69,11 @@ ActiveRecord::Schema.define(version: 2019_04_15_135051) do
   end
 
   create_table "plan_of_data", force: :cascade do |t|
-    t.integer "velocity_max_upload"
-    t.integer "velocity_max_download"
+    t.integer "velocity_max_upload", null: false
+    t.integer "velocity_max_download", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "name"
+    t.string "name", null: false
     t.index ["name"], name: "index_plan_of_data_on_name", unique: true
   end
 
@@ -92,6 +102,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_135051) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "address_ranges", "concentrators"
   add_foreign_key "addresses", "clients"
   add_foreign_key "links", "addresses"
 end
