@@ -27,7 +27,7 @@ class Concentrator < ApplicationRecord
 
 	def test_conection
 		begin
-        	mk = MTik::command(host: address, user: login, password: password, command: '/ip/address/print', conn_timeout: 5)
+        	mk = MTik::command(host: address, user: login, pass: password, command: '/ip/address/print', conn_timeout: 5)
         	{message: mk, success: true, status: :ok}
       	rescue Exception=> e
        		{message: e.message , success: false, status: :error}
@@ -37,7 +37,7 @@ class Concentrator < ApplicationRecord
 	def info_concentrator
 		if(online?)
 			begin
-				mtik = MTik::Connection.new host: address, user: login, password: password, conn_timeout: 1
+				mtik = MTik::Connection.new host: address, user: login, pass: password, conn_timeout: 1
 				cpu_and_memory = mtik.get_reply '/system/resource/print'
 				network = mtik.get_reply '/interface/monitor-traffic',
 					'=interface=aggregate',
