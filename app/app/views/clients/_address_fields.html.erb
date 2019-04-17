@@ -4,7 +4,7 @@
 	<div class="fields">
 		<div class="four wide field">
 			<%= form.label :zip_code %>
-			<%= form.text_field :zip_code, onblur: 'searchCEP(this.id);' %>
+			<%= form.text_field :zip_code, onblur: 'searchCEP(this);', class: 'cep' %>
 		</div>
 
 		<div class="four wide field">
@@ -57,3 +57,7 @@
 </li>
 
 <hr>
+
+<script type="text/javascript">
+	$('.cep').mask("00.000-000");
+</script>

@@ -1,8 +1,9 @@
 <script type="text/javascript">
-  function searchCEP(id) {
-    let element = $("#"+id);
+  function searchCEP(el) {
+    let element = $(el);
     let cep = element.val().replace(/\D/g, '');
-    
+    console.log(cep);
+
     if (cep != "") {
       const validacep = /^[0-9]{8}$/;
       if(validacep.test(cep)){
@@ -16,7 +17,6 @@
           chidrens[4].value = content.complemento;
           chidrens[5].value = content.localidade;
           chidrens[6].value = content.uf;
-          //fill_in_information(content);
         }
       });
      }
@@ -71,3 +71,7 @@
   </div>
   <% end %>
 </div>
+
+<script type="text/javascript">
+  $('#client_cpf').mask("000.000.000-00");
+</script>
