@@ -11,6 +11,7 @@
 #  neighborhood :string           not null
 #  number       :string
 #  state        :string           not null
+#  visible      :boolean          default(TRUE), not null
 #  zip_code     :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null

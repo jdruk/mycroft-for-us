@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_154838) do
+ActiveRecord::Schema.define(version: 2019_04_16_235633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.bigint "concentrator_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
     t.index ["concentrator_id"], name: "index_address_ranges_on_concentrator_id"
   end
 
@@ -38,6 +39,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.string "state", null: false
     t.string "neighborhood", null: false
     t.string "complement", null: false
+    t.boolean "visible", default: true, null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
   end
 
@@ -46,6 +48,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.string "cpf", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
   end
 
   create_table "concentrators", force: :cascade do |t|
@@ -55,6 +58,33 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.string "password", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
+  end
+
+  create_table "impressions", force: :cascade do |t|
+    t.string "impressionable_type"
+    t.integer "impressionable_id"
+    t.integer "user_id"
+    t.string "controller_name"
+    t.string "action_name"
+    t.string "view_name"
+    t.string "request_hash"
+    t.string "ip_address"
+    t.string "session_hash"
+    t.text "message"
+    t.text "referrer"
+    t.text "params"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
+    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
+    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
+    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
+    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
+    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
+    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
+    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
+    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -65,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "address_id", null: false
+    t.boolean "visible", default: true, null: false
     t.index ["address_id"], name: "index_links_on_address_id"
   end
 
@@ -74,6 +105,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
+    t.boolean "visible", default: true, null: false
     t.index ["name"], name: "index_plan_of_data_on_name", unique: true
   end
 
@@ -97,6 +129,7 @@ ActiveRecord::Schema.define(version: 2019_04_16_154838) do
     t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "visible", default: true, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["username"], name: "index_users_on_username", unique: true

@@ -23,24 +23,25 @@
   </div>
   
   <% if current_page?(new_user_path) %>
-    <div class="fields">
-      <div class="eight wide field">
+  <div class="fields">
+    <div class="eight wide field">
       <%= form.label :password %>
       <% if @minimum_password_length %>
       <em>(<%= @minimum_password_length %> characters minimum)</em>
       <% end %><br />
-      <%= form.password_field :password, required: true, autocomplete: "off" %>
+      <%= form.password_field :password, autocomplete: "off" %>
     </div>
     <div class="eight wide field">
       <%= form.label :password_confirmation %><br />
-      <%= form.password_field :password_confirmation, required: true, autocomplete: "off" %>
+      <%= form.password_field :password_confirmation, autocomplete: "off" %>
     </div>
-  <% end %>
-    
   </div>
+  <% end %>
+  
+  
   
   <div class="actions">
     <%= form.submit  class:'ui blue button' %>
   </div>
   <% end %>
-  </div>
+</div>

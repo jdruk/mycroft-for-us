@@ -6,6 +6,7 @@
 #  name                  :string           not null
 #  velocity_max_download :integer          not null
 #  velocity_max_upload   :integer          not null
+#  visible               :boolean          default(TRUE), not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
 #

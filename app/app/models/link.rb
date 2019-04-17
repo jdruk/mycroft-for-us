@@ -7,6 +7,7 @@
 #  password   :string
 #  status     :integer          default(0), not null
 #  type_link  :integer          default(0), not null
+#  visible    :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  address_id :bigint(8)        not null

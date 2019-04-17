@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
-	helper_method :set_current_concentrator
+	
+  # Logs
+  impressionist 
+
+  helper_method :set_current_concentrator
 
   # Devise
   before_action :configure_permitted_parameters, if: :devise_controller?

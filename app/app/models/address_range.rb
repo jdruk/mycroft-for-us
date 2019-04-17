@@ -6,6 +6,7 @@
 #  end_range       :inet             not null
 #  name            :string           not null
 #  start_range     :inet             not null
+#  visible         :boolean          default(TRUE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  concentrator_id :bigint(8)
@@ -20,5 +21,7 @@
 #
 
 class AddressRange < ApplicationRecord
-  belongs_to :concentrator
+
+	# Relacionamentos
+	belongs_to :concentrator
 end

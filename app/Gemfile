@@ -12,6 +12,7 @@ gem 'simplecov', require: false, group: :test
 gem 'geocoder'
 gem 'plotly-rails-js'
 gem 'mtik'
+gem 'impressionist'
 
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'

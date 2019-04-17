@@ -20,6 +20,7 @@
 #  sign_in_count          :integer          default(0), not null
 #  unlock_token           :string
 #  username               :string
+#  visible                :boolean          default(TRUE), not null
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

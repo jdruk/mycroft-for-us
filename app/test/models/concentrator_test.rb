@@ -7,6 +7,7 @@
 #  hostname   :string           not null
 #  login      :string           not null
 #  password   :string           not null
+#  visible    :boolean          default(TRUE), not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

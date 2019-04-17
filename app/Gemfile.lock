@@ -94,6 +94,8 @@ GEM
       activesupport (>= 4.2.0)
     i18n (1.1.0)
       concurrent-ruby (~> 1.0)
+    impressionist (1.6.1)
+      nokogiri (~> 1)
     io-like (0.3.0)
     jbuilder (2.7.0)
       activesupport (>= 4.2.0)
@@ -235,6 +237,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   geocoder
+  impressionist
   jbuilder (~> 2.5)
   jquery-rails
   listen (>= 3.0.5, < 3.2)
