@@ -1,0 +1,7 @@
+sudo usermod -aG docker $(whoami)
+
+sudo docker run --name postradius -d -p 5432:5432 -e POSTGRES_PASSWORD=postradius postgres:latest
+
+mkdir -p ~/mongo/data/db
+
+sudo docker run --name mongoserver -p 27017:27017 -v ~/mongo/data/db:/data/db -d mongo
