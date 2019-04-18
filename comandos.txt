@@ -1,7 +1,13 @@
 sudo usermod -aG docker $(whoami)
+# necessário reniciar o computador
 
-sudo docker run --name postradius -d -p 5432:5432 -e POSTGRES_PASSWORD=postradius postgres:latest
+# postgres
+docker run --name postradius -d -p 5432:5432 -e POSTGRES_PASSWORD=postradius postgres:latest
 
 mkdir -p ~/mongo/data/db
 
-sudo docker run --name mongoserver -p 27017:27017 -v ~/mongo/data/db:/data/db -d mongo
+# mongo
+docker run --name mongoserver -p 27017:27017 -v ~/mongo/data/db:/data/db -d mongo
+
+# redis
+docker run -d -p 6379:6379 -it redis:latest
