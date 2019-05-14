@@ -1,5 +1,14 @@
 class ApplicationController < ActionController::Base
 	
+  # Autorização e login check
+  before_action :authenticate_user!
+  load_and_authorize_resource
+  check_authorization
+
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to '/', :alert => exception.message
+  end
+
   # Logs
   impressionist 
 
