@@ -38,7 +38,7 @@ class User < ApplicationRecord
   :recoverable, :rememberable, :validatable,
   :lockable, :trackable, :timeoutable
 
-  enum role: [ :normal,:admin]
+  enum role: [ :clerk,:admin]
 
   def active_for_authentication? 
     super && approved? 
