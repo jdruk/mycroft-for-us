@@ -16,7 +16,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  role                   :integer          default(0), not null
+#  role                   :integer          default("clerk"), not null
 #  sign_in_count          :integer          default(0), not null
 #  unlock_token           :string
 #  username               :string

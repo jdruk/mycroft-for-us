@@ -1,6 +1,6 @@
 <div class="ui  labeled icon vertical left inverted fixed menu">
 	<%= link_to root_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="home icon"></i>Inicio
+		<%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
 	<% end %>
 	
 	<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_235633) do
+ActiveRecord::Schema.define(version: 2019_05_20_145301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,31 @@ ActiveRecord::Schema.define(version: 2019_04_16_235633) do
     t.string "complement", null: false
     t.boolean "visible", default: true, null: false
     t.index ["client_id"], name: "index_addresses_on_client_id"
+  end
+
+  create_table "bank_accounts", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "account", null: false
+    t.string "agency", null: false
+    t.string "digit"
+    t.boolean "visible", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "banks", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "code", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "description"
+    t.boolean "visible", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "clients", force: :cascade do |t|

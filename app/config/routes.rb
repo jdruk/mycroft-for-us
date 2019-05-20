@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   
+  resources :bank_accounts
+  resources :categories
   resources :address_ranges
   resources :concentrators
   post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'

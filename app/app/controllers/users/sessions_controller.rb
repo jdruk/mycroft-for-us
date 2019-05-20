@@ -5,6 +5,7 @@ class Users::SessionsController < Devise::SessionsController
 
   layout 'home_layout'
   skip_authorization_check
+  skip_load_and_authorize_resource
   # GET /resource/sign_in
   # def new
   #   super
