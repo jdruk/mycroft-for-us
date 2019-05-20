@@ -1,0 +1,12 @@
+'pt-BR':
+    errors:
+      messages:
+        carrierwave_processing_error: Falha ao processar o arquivo
+        carrierwave_integrity_error: Tipo de arquivo não permitido
+        carrierwave_download_error: Download não possivel
+        extension_whitelist_error: "Você não pode enviar arquivos com a extensão %{extension}, somente tipos : %{allowed_types}"
+        extension_blacklist_error: "Você não pode enviar arquivos com a extensão %{extension}, tipos proibidos: %{prohibited_types}"
+        content_type_whitelist_error: "Você não pode enviar arquivos com a extensão %{content_type}, tipos permitidos: %{allowed_types}"
+        content_type_blacklist_error: "Você não pode enviar arquivos com a extensão %{content_type}"
+        min_size_error: "Tamanho minimo de arquivo é %{min_size}"
+        max_size_error: "Arquivo dever tamanho menor que %{max_size}"
