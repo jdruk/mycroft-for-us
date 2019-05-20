@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_145301) do
+ActiveRecord::Schema.define(version: 2019_05_20_155731) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -51,6 +51,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_145301) do
     t.boolean "visible", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "bank_id", null: false
+    t.index ["bank_id"], name: "index_bank_accounts_on_bank_id"
   end
 
   create_table "banks", force: :cascade do |t|
@@ -162,5 +164,6 @@ ActiveRecord::Schema.define(version: 2019_05_20_145301) do
 
   add_foreign_key "address_ranges", "concentrators"
   add_foreign_key "addresses", "clients"
+  add_foreign_key "bank_accounts", "banks"
   add_foreign_key "links", "addresses"
 end
