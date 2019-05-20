@@ -18,6 +18,7 @@ gem 'mtik'
 gem 'tl1'
 # Logs
 gem 'impressionist'
+gem 'carrierwave', '~> 1.0'
 
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
