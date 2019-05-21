@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Cashieros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Operation</th>
+      <th>Value</th>
+      <th>Description</th>
+      <th>Photos</th>
+      <th>User</th>
+      <th>Payment type</th>
+      <th>Bank account</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @cashieros.each do |cashiero| %>
+      <tr>
+        <td><%= cashiero.operation %></td>
+        <td><%= cashiero.value %></td>
+        <td><%= cashiero.description %></td>
+        <td><%= cashiero.photos %></td>
+        <td><%= cashiero.user %></td>
+        <td><%= cashiero.payment_type %></td>
+        <td><%= cashiero.bank_account %></td>
+        <td><%= link_to 'Show', cashiero %></td>
+        <td><%= link_to 'Edit', edit_cashiero_path(cashiero) %></td>
+        <td><%= link_to 'Destroy', cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Cashiero', new_cashiero_path %>

@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Operation:</strong>
+  <%= @cashiero.operation %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @cashiero.value %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @cashiero.description %>
+</p>
+
+<p>
+  <strong>Photos:</strong>
+  <%= @cashiero.photos %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @cashiero.user %>
+</p>
+
+<p>
+  <strong>Payment type:</strong>
+  <%= @cashiero.payment_type %>
+</p>
+
+<p>
+  <strong>Bank account:</strong>
+  <%= @cashiero.bank_account %>
+</p>
+
+<%= link_to 'Edit', edit_cashiero_path(@cashiero) %> |
+<%= link_to 'Back', cashieros_path %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_20_155731) do
+ActiveRecord::Schema.define(version: 2019_05_21_100033) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,6 +60,24 @@ ActiveRecord::Schema.define(version: 2019_05_20_155731) do
     t.string "code", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "cashieros", force: :cascade do |t|
+    t.integer "operation", null: false
+    t.integer "value_cents", default: 0, null: false
+    t.string "value_currency", default: "BRL", null: false
+    t.string "description"
+    t.json "photos"
+    t.bigint "user_id", null: false
+    t.integer "payment_type", default: 0, null: false
+    t.bigint "bank_account_id"
+    t.boolean "visible", default: true, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "category_id"
+    t.index ["bank_account_id"], name: "index_cashieros_on_bank_account_id"
+    t.index ["category_id"], name: "index_cashieros_on_category_id"
+    t.index ["user_id"], name: "index_cashieros_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -165,5 +183,8 @@ ActiveRecord::Schema.define(version: 2019_05_20_155731) do
   add_foreign_key "address_ranges", "concentrators"
   add_foreign_key "addresses", "clients"
   add_foreign_key "bank_accounts", "banks"
+  add_foreign_key "cashieros", "bank_accounts"
+  add_foreign_key "cashieros", "categories"
+  add_foreign_key "cashieros", "users"
   add_foreign_key "links", "addresses"
 end

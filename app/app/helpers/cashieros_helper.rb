@@ -1,0 +1,2 @@
+module CashierosHelper
+end

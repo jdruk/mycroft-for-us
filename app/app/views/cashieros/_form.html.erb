@@ -1,0 +1,52 @@
+<%= form_with(model: cashiero, local: true) do |form| %>
+  <% if cashiero.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(cashiero.errors.count, "error") %> prohibited this cashiero from being saved:</h2>
+
+      <ul>
+      <% cashiero.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :operation %>
+    <%= form.number_field :operation %>
+  </div>
+
+  <div class="field">
+    <%= form.label :value %>
+    <%= form.text_field :value %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description %>
+  </div>
+
+  <div class="field">
+    <%= form.label :photos %>
+    <%= form.text_field :photos %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :payment_type %>
+    <%= form.number_field :payment_type %>
+  </div>
+
+  <div class="field">
+    <%= form.label :bank_account_id %>
+    <%= form.text_field :bank_account_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
