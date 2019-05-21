@@ -22,6 +22,6 @@ Caraterísticas:
 `Instalação e demais procedimentos acesse [AQUI](https://github.com/jdruk/mycroft-for-us/wiki/Instala%C3%A7%C3%A3o) 
 
 ##### UML
-![Diagrama de classe](er.svg)
+![Diagrama de classe](app_development.png)
 (Formato DIA UML)
 arquivo:	uml_diagram_class.dia
