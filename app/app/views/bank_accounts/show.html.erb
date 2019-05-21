@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @bank_account.name %>
@@ -7,7 +5,7 @@
 
 <p>
   <strong>Bank:</strong>
-  <%= @bank_account.bank %>
+  <%= @bank_account.bank.name %>
 </p>
 
 <p>
@@ -30,5 +28,5 @@
   <%= @bank_account.visible %>
 </p>
 
-<%= link_to 'Edit', edit_bank_account_path(@bank_account) %> |
-<%= link_to 'Back', bank_accounts_path %>
+<%= link_to 'Editar', edit_bank_account_path(@bank_account) %> 
+<%= link_to 'Voltar', bank_accounts_path %>

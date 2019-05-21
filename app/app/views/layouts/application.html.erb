@@ -1,35 +1,71 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Mycroft Provider</title>
-		<%= csrf_meta_tags %>
-		<%= csp_meta_tag %>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-		<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-		<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-		<%= favicon_link_tag asset_path('iconzinho.ico') %>
-		<%= yield :head %>
-	</head>
-	<body>
-		<%= render 'layouts/top_menu' %>
-		<div class="ui centered grid">
-			<div class="ui computer only large only tablet only one wide column" style="margin-left: 1.5em;">
+<head>
+	<title>Mycroft Provider</title>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+	<%= favicon_link_tag asset_path('iconzinho.ico') %>
+	<%= yield :head %>
+	<style type="text/css">
+		#content {
+			min-height: 100px;
+		}
+		.ui.grid{
+			padding: 0 !important;
+		}
+		.pushable.segment{
+			margin: 0 !important;
+		}	
+	</style>
+	<%= csrf_meta_tags %>
+	<%= csp_meta_tag %>
+</head>
+<body>
+	<div class="ui centered grid">
+		<div class="ui pushable segment">
+			<div class="ui sidebar inverted vertical menu">
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
-			<div  class="fourteen wide sixteen mobile column">
-				<%= render 'layouts/alert_messages' %>
+		</div>
+
+		<div class="tablet mobile only row">
+			<div class="column">
+				<div class="ui inverted menu">
+					<a id="mobile_item" class="item"><i class="bars icon"></i></a>
+					<div class="labeled icon right menu">
+						<%= link_to destroy_user_session_path, class: "#{is_current_page?(destroy_user_session_path)} item", method: :delete do %>
+						<i class="sign-out icon">Sair</i>
+						<% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="ui computer only one wide column" style="margin-left: 1.5em;">
+			<%= render 'layouts/top_menu' %>
+			<div class="ui  labeled icon vertical left inverted fixed menu">
+				<%= render 'layouts/sidebar_menu' %>
+			</div>
+		</div>
+		<div  class="fourteen wide sixteen mobile column">
+			<%= render 'layouts/alert_messages' %>
+			<div class="pusher">
 				<%= yield %>
 			</div>
 		</div>
-	</body>
-	<script type="text/javascript">
-		$('.message .close')
-		  .on('click', function() {
-		    $(this)
-		      .closest('.message')
-		      .transition('fade')
-		    ;
-		  })
-		;
-	</script>
+	</div>
+
+</body>
+<script type="text/javascript">
+	$('.message .close')
+	.on('click', function() {
+		$(this)
+		.closest('.message')
+		.transition('fade');
+	});
+
+	$('.ui.sidebar').sidebar('attach events', '#mobile_item');
+</script>
 </html>

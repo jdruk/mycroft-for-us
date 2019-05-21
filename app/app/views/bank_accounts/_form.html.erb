@@ -1,47 +1,50 @@
-<%= form_with(model: bank_account, local: true) do |form| %>
+<div class="ui left aligned segment form">
+  <%= form_with(model: bank_account, local: true) do |form| %>
   <% if bank_account.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(bank_account.errors.count, "error") %> prohibited this bank_account from being saved:</h2>
+  <div id="error_explanation">
+    <h2><%= pluralize(bank_account.errors.count, "error") %> prohibited this bank_account from being saved:</h2>
 
-      <ul>
+    <ul>
       <% bank_account.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <li><%= message %></li>
       <% end %>
-      </ul>
-    </div>
+    </ul>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+  
+  <div class="fields">
+    <div class="eight wide field">
+        <%= form.label :name %>
+        <%= form.text_field :name %>
+    </div>
+    <div class="eight wide field">
+      <%= form.label :bank_id %>
+      <%= form.collection_select :bank_id,  Bank.available, :id, :name, {}, class: "ui search dropdown" %>
+      <script type="text/javascript">
+        $('.ui.search.dropdown').dropdown();
+      </script>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :bank %>
-    <%= form.text_field :bank %>
-  </div>
+  <div class="fields">
+    <div class="eight wide field">
+      <%= form.label :account %>
+      <%= form.text_field :account %>
+    </div>
 
-  <div class="field">
-    <%= form.label :account %>
-    <%= form.text_field :account %>
+    <div class="eight wide field">
+      <%= form.label :agency %>
+      <%= form.text_field :agency %>
+    </div>
+    
+    <div class="eight wide field">
+      <%= form.label :digit %>
+      <%= form.text_field :digit %>
+    </div>
   </div>
-
-  <div class="field">
-    <%= form.label :agency %>
-    <%= form.text_field :agency %>
-  </div>
-
-  <div class="field">
-    <%= form.label :digit %>
-    <%= form.text_field :digit %>
-  </div>
-
-  <div class="field">
-    <%= form.label :visible %>
-    <%= form.check_box :visible %>
-  </div>
-
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui blue button' %>
   </div>
-<% end %>
+  <% end %>
+</div>

@@ -1,25 +1,28 @@
-<div class="ui  labeled icon vertical left inverted fixed menu">
-	<%= link_to root_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
-	<% end %>
-	
-	<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="user circle icon"></i>Usuários
-	<% end %> 
 
-	<%= link_to clients_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="users circle icon"></i>Clientes
-	<% end %>
+<%= link_to root_path, class: "#{is_current_page?(root_path)} item" do  %>
+<%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
+<% end %>
 
-	<%= link_to concentrators_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="cogs icon"></i>Concentradores
-	<% end %> 
+<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="user circle icon"></i>Usuários
+<% end %> 
 
-	<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="download icon"></i>Planos de dados
-	<% end %>
+<%= link_to clients_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="users circle icon"></i>Clientes
+<% end %>
 
-	<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
-		<i class="clipboard list icon"></i>Relatórios
-	<% end %>   
-</div>
+<%= link_to concentrators_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="cogs icon"></i>Concentradores
+<% end %> 
+
+<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="download icon"></i>Planos de dados
+<% end %>
+
+<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="clipboard list icon"></i>Relatórios
+<% end %>
+
+<%= link_to bank_accounts_path, class: "#{is_current_page?(root_path)} item" do  %>
+<i class="credit card icon" ></i>Contas
+<% end %>   

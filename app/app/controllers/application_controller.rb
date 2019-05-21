@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
 	
+ protect_from_forgery with: :null_session
+  
   # Autorização e login check
   before_action :authenticate_user!
   load_and_authorize_resource

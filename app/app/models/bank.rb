@@ -10,4 +10,8 @@
 #
 
 class Bank < ApplicationRecord
+
+	def self.available
+		Bank.order :name
+	end
 end

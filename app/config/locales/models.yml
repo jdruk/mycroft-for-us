@@ -2,6 +2,7 @@ pt-BR:
     activerecord:
       models:
         address: Endereço
+        bank_account: Conta
         client: Cliente
         concentrator: Concentrador
         link: Link de dados
@@ -35,3 +36,9 @@ pt-BR:
           name: Nome do Plano
           velocity_max_upload:  Máximo Upload 
           velocity_max_download: Máximo Download
+        bank_account:
+          name: Nome da Conta
+          digit: Digito
+          bank_id: Banco
+          account: Conta
+          agency: Agência

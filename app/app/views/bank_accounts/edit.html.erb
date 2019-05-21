@@ -1,6 +1,8 @@
-<h1>Editing Bank Account</h1>
+<div class="ui center aligned segment ">
+	<h1>Editar conta</h1>
 
-<%= render 'form', bank_account: @bank_account %>
+	<%= render 'form', bank_account: @bank_account %>
 
-<%= link_to 'Show', @bank_account %> |
-<%= link_to 'Back', bank_accounts_path %>
+	<%= link_to 'Detalhes', @bank_account, class: 'ui basic button' %> |
+	<%= link_to 'Voltar', bank_accounts_path, class: 'ui basic button' %>
+</div>
