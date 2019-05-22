@@ -24,15 +24,16 @@
 </head>
 <body>
 	<div class="ui centered grid">
+		<!-- Sidebar e menu mobile -->
 		<div class="ui pushable segment">
 			<div class="ui sidebar inverted vertical menu">
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
 		</div>
-
+		
 		<div class="tablet mobile only row">
 			<div class="column">
-				<div class="ui inverted menu">
+				<div class="ui top fixed inverted menu">
 					<a id="mobile_item" class="item"><i class="bars icon"></i></a>
 					<div class="labeled icon right menu">
 						<%= link_to destroy_user_session_path, class: "#{is_current_page?(destroy_user_session_path)} item", method: :delete do %>
@@ -42,30 +43,36 @@
 				</div>
 			</div>
 		</div>
+		<!-- Fim sidebar e menu mobile  -->
 
+		<!-- Menu desktop -->
 		<div class="ui computer only one wide column" style="margin-left: 1.5em;">
 			<%= render 'layouts/top_menu' %>
 			<div class="ui  labeled icon vertical left inverted fixed menu">
 				<%= render 'layouts/sidebar_menu' %>
 			</div>
 		</div>
-		<div  class="fourteen wide sixteen mobile column">
+		<!-- Fim menu desktop -->
+		
+		<!-- Conteudo principal -->
+		<div  class="fourteen wide sixteen mobile column container" style="margin-top: 2.5%;">
 			<%= render 'layouts/alert_messages' %>
 			<div class="pusher">
 				<%= yield %>
 			</div>
 		</div>
+		<!-- Conteudo principal -->
 	</div>
 
-</body>
-<script type="text/javascript">
-	$('.message .close')
-	.on('click', function() {
-		$(this)
-		.closest('.message')
-		.transition('fade');
-	});
+	<script type="text/javascript">
+		$('.message .close')
+		.on('click', function() {
+			$(this)
+			.closest('.message')
+			.transition('fade');
+		});
+		$('.ui.sidebar').sidebar('attach events', '#mobile_item');
 
-	$('.ui.sidebar').sidebar('attach events', '#mobile_item');
-</script>
+	</script>
+</body>
 </html>

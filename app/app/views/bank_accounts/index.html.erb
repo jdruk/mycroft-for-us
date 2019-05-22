@@ -5,12 +5,12 @@
   <table class="ui center aligned table">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Bank</th>
-        <th>Account</th>
-        <th>Agency</th>
-        <th>Digit</th>
-        <th colspan="3"></th>
+        <th>Nome da conta</th>
+        <th>Banco</th>
+        <th>Conta</th>
+        <th>Agência</th>
+        <th>Digito</th>
+        <th colspan="3"class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
       </tr>
     </thead>
 
@@ -33,5 +33,5 @@
 
   <br>
 
-  <%= link_to 'New Bank Account', new_bank_account_path, class: 'ui teal basic button', 'data-tooltip'=>"Adicionar uma nova conta",'data-position' => "top left", 'data-inverted'=>"" %>
+  <%= link_to 'Nova Conta', new_bank_account_path, class: 'ui teal basic button', 'data-tooltip'=>"Adicionar uma nova conta",'data-position' => "top left", 'data-inverted'=>"" %>
 </div>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   
+  get 'financial/dashboard', to: "financial#dashboard", as: 'financial_dashboard'
   resources :cashieros
   root "index#index"
 

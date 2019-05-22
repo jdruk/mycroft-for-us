@@ -10,6 +10,7 @@ class Ability
         if user.admin?
             can :manage, :all
             can :dashboard, :index
+            can :financial, :dashboard
         else user.clerk?
             can :read, :all
             can :dashboard, :index

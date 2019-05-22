@@ -3,19 +3,19 @@
 <%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
 <% end %>
 
-<%= link_to users_path, class: "#{is_current_page?(root_path)} item" do  %>
+<%= link_to users_path, class: "#{is_current_page?(users_path)} item" do  %>
 <i class="user circle icon"></i>Usuários
 <% end %> 
 
-<%= link_to clients_path, class: "#{is_current_page?(root_path)} item" do  %>
+<%= link_to clients_path, class: "#{is_current_page?(clients_path)} item" do  %>
 <i class="users circle icon"></i>Clientes
 <% end %>
 
-<%= link_to concentrators_path, class: "#{is_current_page?(root_path)} item" do  %>
+<%= link_to concentrators_path, class: "#{is_current_page?(concentrators_path)} item" do  %>
 <i class="cogs icon"></i>Concentradores
 <% end %> 
 
-<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+<%= link_to plan_of_data_path, class: "#{is_current_page?(plan_of_data_path)} item" do  %>
 <i class="download icon"></i>Planos de dados
 <% end %>
 
@@ -23,6 +23,6 @@
 <i class="clipboard list icon"></i>Relatórios
 <% end %>
 
-<%= link_to bank_accounts_path, class: "#{is_current_page?(root_path)} item" do  %>
-<i class="credit card icon" ></i>Contas
+<%= link_to financial_dashboard_path, class: "#{is_current_page?(financial_dashboard_path)} item" do  %>
+<i class="credit card icon" ></i>Financeiro
 <% end %>   
