@@ -1,3 +1,4 @@
+<div class="ui left aligned segment form">
 <%= form_with(model: category, local: true) do |form| %>
   <% if category.errors.any? %>
     <div id="error_explanation">
@@ -13,20 +14,16 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="field">
-    <%= form.label :visible %>
-    <%= form.check_box :visible %>
+    <%= form.text_field :description, required: true %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui blue button' %>
   </div>
 <% end %>
+</div>

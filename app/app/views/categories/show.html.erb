@@ -1,19 +1,15 @@
-<p id="notice"><%= notice %></p>
+<h1><i class="tags icon"></i>Categoria</h1>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @category.name %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @category.description %>
 </p>
 
-<p>
-  <strong>Visible:</strong>
-  <%= @category.visible %>
-</p>
 
-<%= link_to 'Edit', edit_category_path(@category) %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Editar', edit_category_path(@category), class: 'ui basic button' %> 
+<%= link_to 'Voltar', categories_path, class: 'ui basic button' %>

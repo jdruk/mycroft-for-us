@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
+<div class="ui aligned segment ">
+  <h1><i class="tags icon"></i>Categorias</h1>
 
-<h1>Categories</h1>
-
-<table>
+<table class="ui center aligned table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Visible</th>
-      <th colspan="3"></th>
+      <th>Nome</th>
+      <th>Descrição</th>
+      <th colspan="3"class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
     </tr>
   </thead>
 
@@ -17,10 +15,11 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.description %></td>
-        <td><%= category.visible %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', category, class: 'ui basic button',
+        'data-tooltip'=>"Informações da categoria" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Editar', edit_category_path(category), class: 'ui black basic button',
+        'data-tooltip'=>"Editar categoria" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Excluir', category, class: 'ui red basic button', method: :delete,'data-tooltip'=>"Excluir categoria" ,'data-position' => "top left", 'data-inverted'=>"", data: { confirm: 'Você tem certeza que deseja excluir a categoria?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -28,4 +27,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'Nova categoria', new_category_path, class: 'ui teal basic button', 'data-tooltip'=>"Adicionar uma nova categoria",'data-position' => "top left", 'data-inverted'=>"" %>

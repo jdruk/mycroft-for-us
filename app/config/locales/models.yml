@@ -8,6 +8,7 @@ pt-BR:
         concentrator: Concentrador
         link: Link de dados
         plan_of_datum: Plano de dados
+        category: Categoria
       attributes:
         address: 
           zip_code: CEP
@@ -30,6 +31,9 @@ pt-BR:
           bank_account_id: Viculada a conta
           user_id: Atendente
           category_id: Categoria
+        category:
+          name: Nome
+          description: Descrição
         client:
           name: Nome
           cpf: CPF 

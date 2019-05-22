@@ -25,7 +25,7 @@ class CashierosController < ApplicationController
   # POST /cashieros.json
   def create
     @cashiero = Cashiero.new(cashiero_params)
-
+    @cashiero.user = current_user
     respond_to do |format|
       if @cashiero.save
         format.html { redirect_to @cashiero, notice: 'Cashiero was successfully created.' }

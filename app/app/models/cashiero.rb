@@ -30,8 +30,12 @@
 #
 
 class Cashiero < ApplicationRecord
-  belongs_to :user
-  belongs_to :bank_account
 
-  monetize :value_cents
+	mount_uploader :photos, ReceiptUploader
+
+	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }	
+	belongs_to :user
+	belongs_to :bank_account
+
+	monetize :value_cents
 end

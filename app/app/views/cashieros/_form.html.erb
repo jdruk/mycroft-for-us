@@ -1,5 +1,5 @@
 <div class="ui left aligned segment form">
-<%= form_with(model: cashiero, local: true) do |form| %>
+<%= form_with(model: cashiero, local: true,  html: { multipart: true }) do |form| %>
   <% if cashiero.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(cashiero.errors.count, "error") %> prohibited this cashiero from being saved:</h2>
@@ -13,8 +13,7 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :operation %>
-    <%= form.number_field :operation %>
+    <%= form.hidden_field :operation %>
   </div>
 
   <div class="field">
@@ -24,22 +23,21 @@
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_field :description, class: 'ui text' %>
   </div>
 
   <div class="field">
-    <%= form.label :photos %>
-    <%= form.text_field :photos %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <%= form.text_field :user_id %>
+    <%# form.label :photos %>
+    <%= form.file_field :photos, multiple: true do  %>
+      <div class="ui button"><i class="file icon"> Fotos</i></div>
+    <% end %>
   </div>
 
   <div class="field">
     <%= form.label :payment_type %>
-    <%= form.number_field :payment_type %>
+    <% Cashiero.payment_types.each  do |k, v| %>
+      <%= form.radio_button :payment_type, k %> <%= k %>
+    <% end %>
   </div>
 
   <div class="field">
@@ -53,3 +51,9 @@
 <% end %>
 
 </div>
+
+<script type="text/javascript">
+  $('radio')
+  .checkbox()
+  ;
+</script>

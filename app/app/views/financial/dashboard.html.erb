@@ -3,10 +3,13 @@
     Contas <i class="dropdown icon"></i>
     <div class="menu">
       <%= link_to  bank_accounts_path, class: 'ui item button' do %>
-      <i class="credit card icon" ></i>Todas
+      <i class="list icon" ></i>Todas
       <% end %>
       <%= link_to  new_bank_account_path, class: 'ui item button' do %>
       <i class="address card icon" ></i>Cadastrar
+      <% end %>
+       <%= link_to  categories_path, class: 'ui item button' do %>
+      <i class="tags icon" ></i>Categorias
       <% end %>
     </div>
   </div>

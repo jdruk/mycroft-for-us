@@ -1,6 +1,6 @@
-<h1>Editing Category</h1>
+<h1><i class="tags icon"></i>Categoria</h1>
 
 <%= render 'form', category: @category %>
 
-<%= link_to 'Show', @category %> |
-<%= link_to 'Back', categories_path %>
+<%= link_to 'Editar', @category, class: 'ui basic button' %> 
+<%= link_to 'Voltar', categories_path, class: 'ui basic button' %>
