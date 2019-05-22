@@ -16,7 +16,7 @@
   <div class="fields">
     <div class="eight wide field">
         <%= form.label :name %>
-        <%= form.text_field :name %>
+        <%= form.text_field :name, required: true %>
     </div>
     <div class="eight wide field">
       <%= form.label :bank_id %>
@@ -30,17 +30,17 @@
   <div class="fields">
     <div class="eight wide field">
       <%= form.label :account %>
-      <%= form.text_field :account %>
+      <%= form.text_field :account, required: true %>
     </div>
 
     <div class="eight wide field">
       <%= form.label :agency %>
-      <%= form.text_field :agency %>
+      <%= form.text_field :agency, required: true %>
     </div>
     
     <div class="eight wide field">
       <%= form.label :digit %>
-      <%= form.text_field :digit %>
+      <%= form.text_field :digit, required: true %>
     </div>
   </div>
   <div class="actions">

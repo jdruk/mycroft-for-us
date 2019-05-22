@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
+<div class="ui aligned segment ">
+  <h1><i class="users icon"></i>Clientes</h1>
 
-<h1>Cashieros</h1>
-
-<table>
+<table class="ui center aligned table">
   <thead>
     <tr>
-      <th>Operation</th>
       <th>Value</th>
       <th>Description</th>
-      <th>Photos</th>
       <th>User</th>
       <th>Payment type</th>
       <th>Bank account</th>
@@ -19,16 +16,13 @@
   <tbody>
     <% @cashieros.each do |cashiero| %>
       <tr>
-        <td><%= cashiero.operation %></td>
         <td><%= cashiero.value %></td>
         <td><%= cashiero.description %></td>
-        <td><%= cashiero.photos %></td>
         <td><%= cashiero.user %></td>
-        <td><%= cashiero.payment_type %></td>
         <td><%= cashiero.bank_account %></td>
-        <td><%= link_to 'Show', cashiero %></td>
-        <td><%= link_to 'Edit', edit_cashiero_path(cashiero) %></td>
-        <td><%= link_to 'Destroy', cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', cashiero %></td>
+        <td><%= link_to 'Editar', edit_cashiero_path(cashiero) %></td>
+        <td><%= link_to 'Excluir', cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +30,6 @@
 
 <br>
 
-<%= link_to 'New Cashiero', new_cashiero_path %>
+<%= link_to 'Novo entrada', new_cashiero_path, class: 'ui blue button' %> 
+<%= link_to 'Novo saída', new_cashiero_path, class: 'ui red button' %>
+</div>

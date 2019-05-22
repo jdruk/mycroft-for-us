@@ -1,3 +1,4 @@
+<div class="ui left aligned segment form">
 <%= form_with(model: cashiero, local: true) do |form| %>
   <% if cashiero.errors.any? %>
     <div id="error_explanation">
@@ -47,6 +48,8 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class: 'ui blue button' %>
   </div>
 <% end %>
+
+</div>

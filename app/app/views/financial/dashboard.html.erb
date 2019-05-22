@@ -1,16 +1,64 @@
 <div class="ui menu">
 	<div class="ui dropdown item">
-      Contas <i class="dropdown icon"></i>
-      <div class="menu">
-        <%= link_to  bank_accounts_path, class: 'ui item button' do %>
-			<i class="credit card icon" ></i>Todas
-		<% end %>
-        <%= link_to  new_bank_account_path, class: 'ui item button' do %>
-			<i class="address card icon" ></i>Cadastrar
-		<% end %>
+    Contas <i class="dropdown icon"></i>
+    <div class="menu">
+      <%= link_to  bank_accounts_path, class: 'ui item button' do %>
+      <i class="credit card icon" ></i>Todas
+      <% end %>
+      <%= link_to  new_bank_account_path, class: 'ui item button' do %>
+      <i class="address card icon" ></i>Cadastrar
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class="ui item right form">
+  <div class="fields">
+    <div class="field">
+      <label>Data de ínicio</label>
+      <div class="ui calendar" id="rangestart">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input type="text" placeholder="Inicio">
+        </div>
       </div>
     </div>
+    <div class="field">
+      <label>Data final</label>
+      <div class="ui calendar" id="rangeend">
+        <div class="ui input left icon">
+          <i class="calendar icon"></i>
+          <input type="text" placeholder="Fim">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<script type="text/javascript">
+  text=   {
+  days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+  months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+  monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+  today: 'Hoje',
+  now: 'Agora',
+  am: 'AM',
+  pm: 'PM'
+}
+
+  $('#rangestart').calendar({
+    type: 'date',
+    initialDate: null,
+    endCalendar: $('#rangeend'),
+    text: text,
+    firstDayOfWeek: 1
+  });
+  $('#rangeend').calendar({
+    type: 'date',
+    startCalendar: $('#rangestart'),
+    text: text,
+    firstDayOfWeek: 1
+  });
+</script>
 
 <div class="ui grid">
   <div class="row">
@@ -44,6 +92,7 @@
 	Plotly.newPlot('quarto', data);
 
 	$(".ui.dropdown").dropdown();
+
 </script>
 
 <div>

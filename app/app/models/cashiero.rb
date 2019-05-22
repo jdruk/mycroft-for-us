@@ -33,5 +33,5 @@ class Cashiero < ApplicationRecord
   belongs_to :user
   belongs_to :bank_account
 
-  monetize :value
+  monetize :value_cents
 end

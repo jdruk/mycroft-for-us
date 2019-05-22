@@ -2,7 +2,6 @@
 <html>
 <head>
 	<title>Mycroft Provider</title>
-	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
@@ -22,15 +21,13 @@
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
 </head>
-<body>
-	<div class="ui centered grid">
-		<!-- Sidebar e menu mobile -->
-		<div class="ui pushable segment">
-			<div class="ui sidebar inverted vertical menu">
-				<%= render 'layouts/sidebar_menu' %>
-			</div>
-		</div>
-		
+<body >
+	<!-- Sidebar e menu mobile -->
+	<div class="ui sidebar inverted vertical menu">
+		<%= render 'layouts/sidebar_menu' %>
+	</div>
+
+	<div class="ui pusher centered grid">
 		<div class="tablet mobile only row">
 			<div class="column">
 				<div class="ui top fixed inverted menu">
@@ -57,9 +54,9 @@
 		<!-- Conteudo principal -->
 		<div  class="fourteen wide sixteen mobile column container" style="margin-top: 2.5%;">
 			<%= render 'layouts/alert_messages' %>
-			<div class="pusher">
-				<%= yield %>
-			</div>
+			
+			<%= yield %>
+			
 		</div>
 		<!-- Conteudo principal -->
 	</div>
@@ -72,7 +69,6 @@
 			.transition('fade');
 		});
 		$('.ui.sidebar').sidebar('attach events', '#mobile_item');
-
 	</script>
 </body>
 </html>

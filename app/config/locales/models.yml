@@ -3,6 +3,7 @@ pt-BR:
       models:
         address: Endereço
         bank_account: Conta
+        cashiero: Caixa
         client: Cliente
         concentrator: Concentrador
         link: Link de dados
@@ -19,6 +20,16 @@ pt-BR:
           state: Estado
           neighborhood: Bairro
           complement: Complemento
+        cashiero:
+          description: Descrição
+          operation: Operação
+          payment_type: Tipo
+          photos: Fotos
+          value_cents: Valor
+          value_currency: Moeda corrente
+          bank_account_id: Viculada a conta
+          user_id: Atendente
+          category_id: Categoria
         client:
           name: Nome
           cpf: CPF 
