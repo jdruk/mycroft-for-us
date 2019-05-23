@@ -1,16 +1,16 @@
 <div class="ui left aligned segment form">
   <%= form_with(model: cashiero, local: true,  html: { multipart: true }) do |form| %>
-    <% if cashiero.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(cashiero.errors.count, "error") %> Erros encontrados:</h2>
+  <% if cashiero.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(cashiero.errors.count, "error") %> Erros encontrados:</h2>
 
-      <ul>
-        <% cashiero.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-    <% end %>
+    <ul>
+      <% cashiero.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+  <% end %>
 
   <div class="field">
     <%= form.hidden_field :operation, value: params[:operation], required: true %>
@@ -29,26 +29,36 @@
   <div class="inline fields">
     <%= form.label :payment_type %>
     <% Cashiero.payment_types.each  do |k, v| %>
-      <div class="ui radio ">
-        <div class="field">
-          <%= form.radio_button :payment_type, k %> 
-          <label><%= k %></label>
-        </div>
+    <div class="ui radio ">
+      <div class="field">
+        <%= form.radio_button :payment_type, k %> 
+        <label><%= k %></label>
       </div>
+    </div>
+    <% end %>
+
+    <div class="field">
+      <% @cashiero.photos.each do |photo| %>
+        <%= image_tag photo.url %>
       <% end %>
 
-      <div class="field">
-        <%= form.label :photos do %>
-          <span class="ui icon green button"><i class="attach icon"></i>Comprovantes</span>
-        <% end %>
-        <%= form.file_field :photos, multiple: true, style: 'display:none;' %>
-      </div>
+      <%= form.label :photos do %>
+        <span class="ui icon green button"><i class="attach icon"></i>Comprovantes</span>
+      <% end %>
+      <%# form.file_field :photos, multiple: true, style: 'display:none;' %>
+      <%= form.file_field :photos, multiple: true %>
+      <%= form.hidden_field :photos_cache %>
+    </div>
   </div>
 
+  <% if(params[:operation] == 'saida') %>
   <div class="field">
     <%= form.label :bank_account_id %>
     <%= form.collection_select :bank_account_id,  BankAccount.available, :id, :name, {}, class: "ui search dropdown" %>
   </div>
+  <% else %>
+  <%= form.hidden_field(:bank_account_id, value: BankAccount.default.id, required: true) %>
+  <% end %>
 
   <div class="actions">
     <%= form.submit class: 'ui blue button' %>

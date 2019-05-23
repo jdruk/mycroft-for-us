@@ -5,8 +5,7 @@
 #  id              :bigint(8)        not null, primary key
 #  description     :string
 #  operation       :integer          not null
-#  payment_type    :integer          default(0), not null
-#  photos          :json
+#  payment_type    :integer          default("dinheiro"), not null
 #  value_cents     :integer          default(0), not null
 #  value_currency  :string           default("BRL"), not null
 #  visible         :boolean          default(TRUE), not null
@@ -31,7 +30,8 @@
 
 class Cashiero < ApplicationRecord
 
-	mount_uploaders :photos, ReceiptUploader
+	has_many :image_cashieros
+	accepts_nested_attributes_for :image_cashieros, reject_if: :all_blank, allow_destroy: true
 
 	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }
 	enum operation: {entrada: 1, saida: 0}	

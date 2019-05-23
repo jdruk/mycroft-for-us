@@ -15,12 +15,7 @@
 </p>
 
 <p>
-  <strong>Fotos:</strong>
-  <%= @cashiero.photos %>
-</p>
-
-<p>
-  <strong>User:</strong>
+  <strong>Atendente:</strong>
   <%= @cashiero.user.name %>
 </p>
 
@@ -33,6 +28,17 @@
   <strong>Conta:</strong>
   <%= @cashiero.bank_account.name %>
 </p>
+
+<hr>
+<h4>Comprovantes</h4>
+
+<div class="ui images">
+  <% @cashiero.photos.each do |photo| %>
+    <%= link_to  photo.url, class: 'ui medium image' do %>
+      <%= image_tag photo.url %>
+    <% end %>
+  <% end %>
+</div>
 
 <%= link_to 'Editar', edit_cashiero_path(@cashiero, operation: @cashiero.operation ), class: 'ui basic button' %> 
 <%= link_to 'Voltar', cashieros_path, class: 'ui basic button' %>

@@ -1,0 +1,27 @@
+<%= form_with(model: image_cashiero, local: true) do |form| %>
+  <% if image_cashiero.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(image_cashiero.errors.count, "error") %> prohibited this image_cashiero from being saved:</h2>
+
+      <ul>
+      <% image_cashiero.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.text_field :image %>
+  </div>
+
+  <div class="field">
+    <%= form.label :cashiero_id %>
+    <%= form.text_field :cashiero_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

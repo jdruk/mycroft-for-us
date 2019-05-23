@@ -33,4 +33,8 @@ class BankAccount < ApplicationRecord
 	def self.available
 		BankAccount.where visible: true
 	end
+
+	def self.default
+		BankAccount.first
+	end
 end

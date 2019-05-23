@@ -1,35 +1,37 @@
 <div class="ui aligned segment ">
   <h1><i class="card icon"></i>Contas</h1>
 
-<table class="ui center aligned table">
-  <thead>
-    <tr>
-      <th>Valor</th>
-      <th>Descrição</th>
-      <th>Atendente</th>
-      <th>Tipo</th>
-      <th>Conta</th>
-      <th colspan="3"class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
-    </tr>
-  </thead>
+  <table class="ui center aligned table">
+    <thead>
+      <tr>
+        <th>Valor</th>
+        <th>Descrição</th>
+        <th>Atendente</th>
+        <th>Tipo</th>
+        <th>Conta</th>
+        <th colspan="3"class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
+      </tr>
+    </thead>
 
-  <tbody>
-    <% @cashieros.each do |cashiero| %>
+    <tbody>
+      <% @cashieros.each do |cashiero| %>
       <tr>
         <td><%= humanized_money_with_symbol cashiero.value %></td>
         <td><%= cashiero.description %></td>
         <td><%= cashiero.user.name %></td>
         <td><%= cashiero.bank_account.name %></td>
-        <td><%= link_to 'Detalhes', cashiero %></td>
-        <td><%= link_to 'Editar', edit_cashiero_path(cashiero, operation: cashiero.operation) %></td>
-        <td><%= link_to 'Excluir', cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Detalhes', cashiero, class: 'ui basic button',
+        'data-tooltip'=>"Informações da movimentação" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Editar', edit_cashiero_path(cashiero, operation: cashiero.operation), class: 'ui black basic button',
+        'data-tooltip'=>"Editar movimentação" ,'data-position' => "top left", 'data-inverted'=>"" %></td>
+        <td><%= link_to 'Excluir', cashiero, class: 'ui red basic button', method: :delete,'data-tooltip'=>"Excluir movimentação" ,'data-position' => "top left", 'data-inverted'=>"", data: { confirm: 'Você tem certeza que deseja excluir esta movimentação' } %></td>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% end %>
+    </tbody>
+  </table>
 
-<br>
+  <br>
 
-<%= link_to 'Novo entrada', new_cashiero_path(operation: :entrada), class: 'ui blue button' %> 
-<%= link_to 'Novo saída', new_cashiero_path(operation: :saida), class: 'ui red button' %>
+  <%= link_to 'Novo entrada', new_cashiero_path(operation: :entrada), class: 'ui blue button' %> 
+  <%= link_to 'Novo saída', new_cashiero_path(operation: :saida), class: 'ui red button' %>
 </div>

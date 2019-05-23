@@ -1,26 +1,28 @@
-
 <%= link_to root_path, class: "#{is_current_page?(root_path)} item" do  %>
-<%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
+	<%= image_tag  "mycroft-logo.png", :style => "max-width: 108px;"%>
 <% end %>
 
-<%= link_to users_path, class: "#{is_current_page?(users_path)} item" do  %>
-<i class="user circle icon"></i>Usuários
-<% end %> 
+<% if current_user.admin? %>
 
-<%= link_to clients_path, class: "#{is_current_page?(clients_path)} item" do  %>
-<i class="users circle icon"></i>Clientes
-<% end %>
+	<%= link_to users_path, class: "#{is_current_page?(users_path)} item" do  %>
+	<i class="user circle icon"></i>Usuários
+	<% end %> 
 
-<%= link_to concentrators_path, class: "#{is_current_page?(concentrators_path)} item" do  %>
-<i class="cogs icon"></i>Concentradores
-<% end %> 
+	<%= link_to clients_path, class: "#{is_current_page?(clients_path)} item" do  %>
+	<i class="users circle icon"></i>Clientes
+	<% end %>
 
-<%= link_to plan_of_data_path, class: "#{is_current_page?(plan_of_data_path)} item" do  %>
-<i class="download icon"></i>Planos de dados
-<% end %>
+	<%= link_to concentrators_path, class: "#{is_current_page?(concentrators_path)} item" do  %>
+	<i class="cogs icon"></i>Concentradores
+	<% end %> 
 
-<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
-<i class="clipboard list icon"></i>Relatórios
+	<%= link_to plan_of_data_path, class: "#{is_current_page?(plan_of_data_path)} item" do  %>
+	<i class="download icon"></i>Planos de dados
+	<% end %>
+
+	<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+	<i class="clipboard list icon"></i>Relatórios
+	<% end %>
 <% end %>
 
 <%= link_to financial_dashboard_path, class: "#{is_current_page?(financial_dashboard_path)} item" do  %>

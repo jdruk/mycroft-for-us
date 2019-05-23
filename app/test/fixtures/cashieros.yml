@@ -5,8 +5,7 @@
 #  id              :bigint(8)        not null, primary key
 #  description     :string
 #  operation       :integer          not null
-#  payment_type    :integer          default(0), not null
-#  photos          :json
+#  payment_type    :integer          default("dinheiro"), not null
 #  value_cents     :integer          default(0), not null
 #  value_currency  :string           default("BRL"), not null
 #  visible         :boolean          default(TRUE), not null

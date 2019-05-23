@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Image Cashieros</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Image</th>
+      <th>Cashiero</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @image_cashieros.each do |image_cashiero| %>
+      <tr>
+        <td><%= image_cashiero.image %></td>
+        <td><%= image_cashiero.cashiero %></td>
+        <td><%= link_to 'Show', image_cashiero %></td>
+        <td><%= link_to 'Edit', edit_image_cashiero_path(image_cashiero) %></td>
+        <td><%= link_to 'Destroy', image_cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Image Cashiero', new_image_cashiero_path %>

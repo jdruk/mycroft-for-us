@@ -7,8 +7,10 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 User.create name: "administrador", role: 1, email: 'administrador@email.com', password: '12345678', password_confirmation: '12345678', approved: true
+User.create name: "atendente", role: 0, email: 'atendente@email.com', password: '12345678', password_confirmation: '12345678', approved: true
 
 Bank.create([
+    {name: 'DEFAULT', code: '000'},
     {name: 'BANCO DO BRASIL', code: '001'},
     {name: 'CAIXA ECONÔMICA FEDERAL', code: ' 104'},
     {name: 'BCO SANTANDER (BRASIL) S.A. ', code: ' 033 '},

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_21_100033) do
+ActiveRecord::Schema.define(version: 2019_05_23_154743) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,7 +67,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_100033) do
     t.integer "value_cents", default: 0, null: false
     t.string "value_currency", default: "BRL", null: false
     t.string "description"
-    t.json "photos"
     t.bigint "user_id", null: false
     t.integer "payment_type", default: 0, null: false
     t.bigint "bank_account_id"
@@ -104,6 +103,15 @@ ActiveRecord::Schema.define(version: 2019_05_21_100033) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "visible", default: true, null: false
+  end
+
+  create_table "image_cashieros", force: :cascade do |t|
+    t.string "image", null: false
+    t.boolean "visible", default: true, null: false
+    t.bigint "cashiero_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["cashiero_id"], name: "index_image_cashieros_on_cashiero_id"
   end
 
   create_table "impressions", force: :cascade do |t|
@@ -186,5 +194,6 @@ ActiveRecord::Schema.define(version: 2019_05_21_100033) do
   add_foreign_key "cashieros", "bank_accounts"
   add_foreign_key "cashieros", "categories"
   add_foreign_key "cashieros", "users"
+  add_foreign_key "image_cashieros", "cashieros"
   add_foreign_key "links", "addresses"
 end
