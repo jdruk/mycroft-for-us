@@ -1,59 +1,63 @@
 <div class="ui left aligned segment form">
-<%= form_with(model: cashiero, local: true,  html: { multipart: true }) do |form| %>
-  <% if cashiero.errors.any? %>
+  <%= form_with(model: cashiero, local: true,  html: { multipart: true }) do |form| %>
+    <% if cashiero.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(cashiero.errors.count, "error") %> prohibited this cashiero from being saved:</h2>
+      <h2><%= pluralize(cashiero.errors.count, "error") %> Erros encontrados:</h2>
 
       <ul>
-      <% cashiero.errors.full_messages.each do |message| %>
+        <% cashiero.errors.full_messages.each do |message| %>
         <li><%= message %></li>
-      <% end %>
+        <% end %>
       </ul>
     </div>
-  <% end %>
+    <% end %>
 
   <div class="field">
-    <%= form.hidden_field :operation %>
+    <%= form.hidden_field :operation, value: params[:operation], required: true %>
   </div>
 
   <div class="field">
     <%= form.label :value %>
-    <%= form.text_field :value %>
+    <%= form.text_field :value, required: true %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_field :description, class: 'ui text' %>
+    <%= form.text_area :description, required: true %>
   </div>
 
-  <div class="field">
-    <%# form.label :photos %>
-    <%= form.file_field :photos, multiple: true do  %>
-      <div class="ui button"><i class="file icon"> Fotos</i></div>
-    <% end %>
-  </div>
-
-  <div class="field">
+  <div class="inline fields">
     <%= form.label :payment_type %>
     <% Cashiero.payment_types.each  do |k, v| %>
-      <%= form.radio_button :payment_type, k %> <%= k %>
-    <% end %>
+      <div class="ui radio ">
+        <div class="field">
+          <%= form.radio_button :payment_type, k %> 
+          <label><%= k %></label>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="field">
+        <%= form.label :photos do %>
+          <span class="ui icon green button"><i class="attach icon"></i>Comprovantes</span>
+        <% end %>
+        <%= form.file_field :photos, multiple: true, style: 'display:none;' %>
+      </div>
   </div>
 
   <div class="field">
     <%= form.label :bank_account_id %>
-    <%= form.text_field :bank_account_id %>
+    <%= form.collection_select :bank_account_id,  BankAccount.available, :id, :name, {}, class: "ui search dropdown" %>
   </div>
 
   <div class="actions">
     <%= form.submit class: 'ui blue button' %>
   </div>
-<% end %>
-
+  <% end %>
 </div>
 
 <script type="text/javascript">
-  $('radio')
-  .checkbox()
-  ;
+  $('.ui.search.dropdown').dropdown();
+
+  $('#cashiero_value').mask('#.##0,00', {reverse: true});
 </script>

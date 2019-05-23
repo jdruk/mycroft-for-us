@@ -31,9 +31,10 @@
 
 class Cashiero < ApplicationRecord
 
-	mount_uploader :photos, ReceiptUploader
+	mount_uploaders :photos, ReceiptUploader
 
-	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }	
+	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }
+	enum operation: {entrada: 1, saida: 0}	
 	belongs_to :user
 	belongs_to :bank_account
 

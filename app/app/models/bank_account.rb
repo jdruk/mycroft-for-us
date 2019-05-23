@@ -29,4 +29,8 @@ class BankAccount < ApplicationRecord
 	validates :digit, presence: true
 	validates :name, presence: true
 	validates :bank_id, presence: true
+
+	def self.available
+		BankAccount.where visible: true
+	end
 end

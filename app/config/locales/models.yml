@@ -26,6 +26,7 @@ pt-BR:
           operation: Operação
           payment_type: Tipo
           photos: Fotos
+          value: Valor
           value_cents: Valor
           value_currency: Moeda corrente
           bank_account_id: Viculada a conta

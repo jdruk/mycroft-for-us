@@ -4,24 +4,24 @@
 <table class="ui center aligned table">
   <thead>
     <tr>
-      <th>Value</th>
-      <th>Description</th>
-      <th>User</th>
-      <th>Payment type</th>
-      <th>Bank account</th>
-      <th colspan="3"></th>
+      <th>Valor</th>
+      <th>Descrição</th>
+      <th>Atendente</th>
+      <th>Tipo</th>
+      <th>Conta</th>
+      <th colspan="3"class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
     </tr>
   </thead>
 
   <tbody>
     <% @cashieros.each do |cashiero| %>
       <tr>
-        <td><%= cashiero.value %></td>
+        <td><%= humanized_money_with_symbol cashiero.value %></td>
         <td><%= cashiero.description %></td>
-        <td><%= cashiero.user %></td>
-        <td><%= cashiero.bank_account %></td>
+        <td><%= cashiero.user.name %></td>
+        <td><%= cashiero.bank_account.name %></td>
         <td><%= link_to 'Detalhes', cashiero %></td>
-        <td><%= link_to 'Editar', edit_cashiero_path(cashiero) %></td>
+        <td><%= link_to 'Editar', edit_cashiero_path(cashiero, operation: cashiero.operation) %></td>
         <td><%= link_to 'Excluir', cashiero, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -30,6 +30,6 @@
 
 <br>
 
-<%= link_to 'Novo entrada', new_cashiero_path, class: 'ui blue button' %> 
-<%= link_to 'Novo saída', new_cashiero_path, class: 'ui red button' %>
+<%= link_to 'Novo entrada', new_cashiero_path(operation: :entrada), class: 'ui blue button' %> 
+<%= link_to 'Novo saída', new_cashiero_path(operation: :saida), class: 'ui red button' %>
 </div>

@@ -69,6 +69,6 @@ class CashierosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashiero_params
-      params.require(:cashiero).permit(:operation, :value, :description, :photos, :user_id, :payment_type, :bank_account_id)
+      params.require(:cashiero).permit(:operation,:value, :description, {photos: []}, :user_id, :payment_type, :bank_account_id)
     end
 end

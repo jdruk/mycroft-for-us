@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>App</title>
+	<title>Mycroft Provider</title>
 	<%= csrf_meta_tags %>
 	<%= csp_meta_tag %>
 	<%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
 	<%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+	<%= favicon_link_tag asset_path('iconzinho.ico') %>
 	<style type="text/css">
 
 	.hidden.menu {
@@ -155,11 +156,13 @@
 				</div>
 			</div>
 			<div class="ui text container">
-				<h1 class="ui inverted header">
-					Mycroft-Provider
+				 <h1 class="ui inverted header">
+					
 				</h1>
-				<h2>Veja o que o sistema codemain pode fazer</h2>
-				<div class="ui huge primary button">Inicie aqui <i class="right arrow icon"></i></div>
+				<%= image_tag 'mycroft-logo.png' %>
+				<%= link_to  new_user_session_path do %>
+					<div class="ui huge primary button">Inicie aqui <i class="right arrow icon"></i></div>
+				<% end %>
 			</div>
 		</div>
 

@@ -1,39 +1,38 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Operation:</strong>
+  <strong>Operação:</strong>
   <%= @cashiero.operation %>
 </p>
 
 <p>
-  <strong>Value:</strong>
+  <strong>Valor:</strong>
   <%= @cashiero.value %>
 </p>
 
 <p>
-  <strong>Description:</strong>
+  <strong>Descrição:</strong>
   <%= @cashiero.description %>
 </p>
 
 <p>
-  <strong>Photos:</strong>
+  <strong>Fotos:</strong>
   <%= @cashiero.photos %>
 </p>
 
 <p>
   <strong>User:</strong>
-  <%= @cashiero.user %>
+  <%= @cashiero.user.name %>
 </p>
 
 <p>
-  <strong>Payment type:</strong>
+  <strong>Tipo</strong>
   <%= @cashiero.payment_type %>
 </p>
 
 <p>
-  <strong>Bank account:</strong>
-  <%= @cashiero.bank_account %>
+  <strong>Conta:</strong>
+  <%= @cashiero.bank_account.name %>
 </p>
 
-<%= link_to 'Edit', edit_cashiero_path(@cashiero) %> |
-<%= link_to 'Back', cashieros_path %>
+<%= link_to 'Editar', edit_cashiero_path(@cashiero, operation: @cashiero.operation ), class: 'ui basic button' %> 
+<%= link_to 'Voltar', cashieros_path, class: 'ui basic button' %>

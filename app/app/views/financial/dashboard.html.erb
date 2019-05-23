@@ -89,7 +89,7 @@
 		type: 'pie'
 	}];
 
-	Plotly.newPlot('chart', data);
+	Plotly.newPlot('chart', data, {font: {size: 20}},  {responsive: true});
 	Plotly.newPlot('cpu', data);
 	Plotly.newPlot('memory', data);
 	Plotly.newPlot('quarto', data);
