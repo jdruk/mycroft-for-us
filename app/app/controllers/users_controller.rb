@@ -64,6 +64,7 @@ class UsersController < ApplicationController
   end
 
   def change_approved
+    authorize! :user, :change_approved
     @user = User.find params[:id]
     @user.approved = !@user.approved
     respond_to do |format|

@@ -5,5 +5,7 @@ class FinancialController < ApplicationController
   skip_authorization_check
 
   def dashboard
+  	@q = Cashiero.ransack(params[:q])
+  	@cashieros = @q.result()
   end
 end

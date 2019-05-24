@@ -1,0 +1,105 @@
+<% if current_user.admin? %>
+  <h4 class="ui horizontal divider header">
+    <i class="bar chart icon"></i>
+    Estatísticas
+  </h4>  
+  <div class="ui statistics">
+    <div class="statistic">
+      <div class="value">
+        <i class="user icon"></i> <%= User.count %>
+      </div>
+      <div class="label">
+        Usuários
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value">
+        <i class="users icon"></i> <%= Client.count %>
+      </div>
+      <div class="label">
+        Clientes
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value">
+        <i class="edit icon"></i> <%= Cashiero.count %>
+      </div>
+      <div class="label">
+        Fluxo de caixa
+      </div>
+    </div>
+    <div class="statistic">
+      <div class="value">
+        <i class="doctor icon"></i> <%= 5 %>
+      </div>
+      <div class="label">
+        Perícias
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="ui two column relaxed grid">
+    <div class="sixteen mobile column">
+      <h4 class="ui horizontal divider header">
+        <i class="list layout icon"></i>
+        Ultimos usuários
+      </h4>  
+      <table class="ui right aligned table">
+        <thead>
+          <th class="left aligned">Nome</th>
+          <th class="left aligned">E-mail</th>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td class="left aligned"><%= user.name%></td>
+            <td class="left aligned"><%= user.email%></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="sixteen mobile  column">
+      <h4 class="ui horizontal divider header">
+        <i class="list layout icon"></i>
+        Ultimas transações
+      </h4>  
+      <table class="ui right aligned table">
+        <thead>
+          <th class="left aligned">Atendente</th>
+          <th class="left aligned">Valor</th>
+        </thead>
+        <tbody>
+          <% @cashiero.each do |cashiero| %>
+          <tr>
+            <td class="left aligned"><%= cashiero.user.name%></td>
+            <td class="left <%= cashiero_of_the_exit cashiero %> aligned"><%= humanized_money_with_symbol cashiero.value %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+      
+    </div>
+  </div>
+  <div class="ui container">
+    <h4 class="ui horizontal divider header">
+      <i class="list layout icon"></i>
+      Ultimos clientes cadastrados
+    </h4>  
+    <table class="ui right aligned table">
+      <thead>
+        <th class="left aligned">Nome</th>
+        <th class="left aligned">CPF</th>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+        <tr>
+          <td class="left aligned"><%= client.name%></td>
+          <td class="left aligned"><%= client.cpf %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+<% end %>

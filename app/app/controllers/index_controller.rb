@@ -13,5 +13,10 @@ class IndexController < ApplicationController
 
 	def dashboard
 		authorize! :dashboard, :index
+		if current_user.admin?
+			@users = User.order(:current_sign_in_at).take(10)
+			@cashiero = Cashiero.order(:updated_at).take(10)
+			@clients = Client.order(:updated_at).take(10)
+		end
 	end
 end

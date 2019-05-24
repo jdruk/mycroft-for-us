@@ -8,6 +8,10 @@ module ApplicationHelper
 		link_to options[:name], options[:url], method: options[:method], class: html_options.values
 	end 
 
+	def cashiero_of_the_exit cashiero
+		"error" if cashiero.operation == "saida"
+	end
+
 	private 
 	def options(login)
 		if login.nil?
@@ -16,4 +20,6 @@ module ApplicationHelper
 			{name: 'Sair', url: destroy_user_session_path, method: :delete}
 		end
 	end
+
+
 end

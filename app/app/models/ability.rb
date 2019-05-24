@@ -11,6 +11,7 @@ class Ability
             can :manage, :all
             can :dashboard, :index
             can :financial, :dashboard
+            can :user, :change_approved
         else user.clerk?
             can :read, :all
             can :dashboard, :index

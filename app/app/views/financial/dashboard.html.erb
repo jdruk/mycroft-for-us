@@ -1,3 +1,26 @@
+<%= search_form_for @q, url: financial_dashboard_path, class: 'ui item right form' do |f| %>
+<div class="fields">
+  <div class="field">
+    <div class="ui calendar" id="rangestart">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.search_field :created_at_eq, placeholder: 'Inicio' %>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <div class="ui calendar" id="rangeend">
+      <div class="ui input left icon">
+        <i class="calendar icon"></i>
+        <%= f.search_field :created_at_lteq, placeholder: 'Inicio' %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= f.submit class: 'ui blue button' %>
+<% end %>
+
 <div class="ui menu">
 	<div class="ui dropdown item">
     Contas <i class="dropdown icon"></i>
@@ -8,13 +31,21 @@
       <%= link_to  new_bank_account_path, class: 'ui item button' do %>
       <i class="address card icon" ></i>Cadastrar
       <% end %>
-       <%= link_to  categories_path, class: 'ui item button' do %>
+      <%= link_to  categories_path, class: 'ui item button' do %>
       <i class="tags icon" ></i>Categorias
       <% end %>
     </div>
   </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="ui item right form">
+<!--div class="ui item right form">
   <div class="fields">
     <div class="field">
       <label>Data de ínicio</label>
@@ -35,31 +66,43 @@
       </div>
     </div>
   </div>
-</div>
+</div-->
 
 <script type="text/javascript">
   text=   {
-  days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
-  months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
-  monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
-  today: 'Hoje',
-  now: 'Agora',
-  am: 'AM',
-  pm: 'PM'
-}
+    days: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sab'],
+    months: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+    monthsShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+    today: 'Hoje',
+    now: 'Agora',
+    am: 'AM',
+    pm: 'PM'
+  }
+
+  formatter = {
+    date: function (date, settings) {
+      if (!date) return '';
+      var day = date.getDate();
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      return day + '/' + month + '/' + year;
+    }
+  }
 
   $('#rangestart').calendar({
     type: 'date',
     initialDate: null,
     endCalendar: $('#rangeend'),
     text: text,
-    firstDayOfWeek: 1
+    firstDayOfWeek: 1,
+    formatter: formatter
   });
   $('#rangeend').calendar({
     type: 'date',
     startCalendar: $('#rangestart'),
     text: text,
-    firstDayOfWeek: 1
+    firstDayOfWeek: 1,
+    formatter: formatter
   });
 </script>
 
