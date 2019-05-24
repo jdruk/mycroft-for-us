@@ -13,4 +13,8 @@
 class Category < ApplicationRecord
 	validates :name, presence: true
 	validates :description, presence: true
+
+	def self.available
+		Category.where visible: true
+	end
 end

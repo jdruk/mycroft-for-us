@@ -31,6 +31,7 @@ class CashierosController < ApplicationController
         format.html { redirect_to @cashiero, notice: 'Cashiero was successfully created.' }
         format.json { render :show, status: :created, location: @cashiero }
       else
+        @operation = params[:operation] || @cashiero.operation
         format.html { render :new }
         format.json { render json: @cashiero.errors, status: :unprocessable_entity }
       end
@@ -41,14 +42,11 @@ class CashierosController < ApplicationController
   # PATCH/PUT /cashieros/1.json
   def update
     respond_to do |format|
-      old_photos = @cashiero.photos
       if @cashiero.update(cashiero_params)
-        old_photos += @cashiero.photos
-        puts @cashiero.photos = old_photos
-        @cashiero.save
         format.html { redirect_to @cashiero, notice: 'Cashiero was successfully updated.' }
         format.json { render :show, status: :ok, location: @cashiero }
       else
+        @operation = params[:operation] || @cashiero.operation
         format.html { render :edit }
         format.json { render json: @cashiero.errors, status: :unprocessable_entity }
       end
@@ -73,6 +71,7 @@ class CashierosController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def cashiero_params
-      params.require(:cashiero).permit(:operation,:value, :description, {photos: []}, :photos_cache, :user_id, :payment_type, :bank_account_id)
+      params.require(:cashiero).permit(:operation,:value, :description, 
+        :user_id, :payment_type, :bank_account_id, :category_id,  :image_cashieros_attributes => [:id, :image, :visible, :_destroy])
     end
 end

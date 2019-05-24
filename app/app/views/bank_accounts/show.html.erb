@@ -1,32 +1,28 @@
+<h1><i class="money icon"></i>Conta</h1>
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @bank_account.name %>
 </p>
 
 <p>
-  <strong>Bank:</strong>
+  <strong>Banco:</strong>
   <%= @bank_account.bank.name %>
 </p>
 
 <p>
-  <strong>Account:</strong>
+  <strong>Conta:</strong>
   <%= @bank_account.account %>
 </p>
 
 <p>
-  <strong>Agency:</strong>
+  <strong>Agência:</strong>
   <%= @bank_account.agency %>
 </p>
 
 <p>
-  <strong>Digit:</strong>
+  <strong>Digito:</strong>
   <%= @bank_account.digit %>
 </p>
 
-<p>
-  <strong>Visible:</strong>
-  <%= @bank_account.visible %>
-</p>
-
-<%= link_to 'Editar', edit_bank_account_path(@bank_account) %> 
-<%= link_to 'Voltar', bank_accounts_path %>
+<%= link_to 'Editar', edit_bank_account_path(@bank_account), class: 'ui basic button' %> 
+<%= link_to 'Voltar', bank_accounts_path, class: 'ui basic button' %>

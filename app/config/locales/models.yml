@@ -9,6 +9,8 @@ pt-BR:
         link: Link de dados
         plan_of_datum: Plano de dados
         category: Categoria
+        image_cashiero: Comprovante 
+        image_cashieros: Comprovante 
       attributes:
         address: 
           zip_code: CEP
@@ -32,6 +34,7 @@ pt-BR:
           bank_account_id: Viculada a conta
           user_id: Atendente
           category_id: Categoria
+          image_cashieros: Comprovante
         category:
           name: Nome
           description: Descrição
@@ -58,3 +61,5 @@ pt-BR:
           bank_id: Banco
           account: Conta
           agency: Agência
+        image_cashiero:
+          image: Imagem

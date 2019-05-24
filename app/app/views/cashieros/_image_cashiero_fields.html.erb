@@ -1,0 +1,13 @@
+<li class="control-group nested-fields">
+
+  <div class="controls">
+    <%= form.label :image %><br>
+    <%= form.file_field :image, class: 'ui file ' %>
+  </div>
+
+  <br>
+  <div class="controls">
+    <%= link_to_remove_association "Remover", form, class: 'ui tiny red basic button' %>
+  </div>
+
+</li>

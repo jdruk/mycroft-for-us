@@ -24,6 +24,13 @@
   <%= @cashiero.payment_type %>
 </p>
 
+<% if @cashiero.operation == 'saida' %>
+  <p>
+    <strong>Categoria</strong>
+    <%= @cashiero.category.name %>
+  </p>
+<% end %>
+
 <p>
   <strong>Conta:</strong>
   <%= @cashiero.bank_account.name %>
@@ -33,9 +40,9 @@
 <h4>Comprovantes</h4>
 
 <div class="ui images">
-  <% @cashiero.photos.each do |photo| %>
-    <%= link_to  photo.url, class: 'ui medium image' do %>
-      <%= image_tag photo.url %>
+  <% @cashiero.image_cashieros.each do |image_cashiero| %>
+    <%= link_to  image_cashiero.image.url, class: 'ui medium image' do %>
+      <%= image_tag image_cashiero.image.url %>
     <% end %>
   <% end %>
 </div>

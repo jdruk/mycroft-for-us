@@ -31,7 +31,7 @@ class BankAccount < ApplicationRecord
 	validates :bank_id, presence: true
 
 	def self.available
-		BankAccount.where visible: true
+		all = BankAccount.where("visible = true and id <> ?", default.id)
 	end
 
 	def self.default

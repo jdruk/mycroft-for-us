@@ -6,9 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }},)
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Criando Usuários"
 User.create name: "administrador", role: 1, email: 'administrador@email.com', password: '12345678', password_confirmation: '12345678', approved: true
 User.create name: "atendente", role: 0, email: 'atendente@email.com', password: '12345678', password_confirmation: '12345678', approved: true
 
+puts "Inserindo Lista de Bancos"
 Bank.create([
     {name: 'DEFAULT', code: '000'},
     {name: 'BANCO DO BRASIL', code: '001'},
@@ -123,3 +125,8 @@ Bank.create([
     {name: 'BCO A.J. RENNER S.A. ', code: ' 654  '},
     {name: 'BANCO ORIGINAL ', code: ' 212 '}]
     )
+
+puts "Criando Conta padrão"
+BankAccount.create agency: '000', digit: '000', name: 'Conta padrão', bank_id: Bank.first.id, account: '000'
+
+puts "pronto!"
