@@ -41,6 +41,10 @@ pt-BR:
         client:
           name: Nome
           cpf: CPF 
+          rg: RG
+          description: Descrição
+          cell: Celular
+          phone: Telefone
         concentrator:
           hostname: Nome do host
           address: Endereço de conexão

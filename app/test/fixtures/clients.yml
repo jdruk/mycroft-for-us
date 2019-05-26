@@ -2,12 +2,16 @@
 #
 # Table name: clients
 #
-#  id         :bigint(8)        not null, primary key
-#  cpf        :string           not null
-#  name       :string           not null
-#  visible    :boolean          default(TRUE), not null
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
+#  id          :bigint(8)        not null, primary key
+#  cell        :string
+#  cpf         :string           not null
+#  description :text
+#  name        :string           not null
+#  phone       :string
+#  rg          :string
+#  visible     :boolean          default(TRUE), not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html

@@ -7,7 +7,7 @@
 #  operation       :integer          not null
 #  payment_type    :integer          default("dinheiro"), not null
 #  value_cents     :integer          default(0), not null
-#  value_currency  :string           default("BRL"), not null
+#  value_currency  :string           default("USD"), not null
 #  visible         :boolean          default(TRUE), not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null

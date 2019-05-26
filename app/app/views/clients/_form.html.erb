@@ -49,6 +49,28 @@
       <%= form.label :cpf %>
       <%= form.text_field :cpf %>
     </div>
+
+    <div class="field">
+      <%= form.label :rg %>
+      <%= form.text_field :rg %>
+    </div>
+  </div>
+
+  <div class="fields">
+    <div class="field">
+      <%= form.label :cell %>
+      <%= form.text_field :cell %>
+    </div>
+
+    <div class="field">
+      <%= form.label :phone %>
+      <%= form.text_field :phone %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description %>
   </div>
   
 
@@ -74,4 +96,7 @@
 
 <script type="text/javascript">
   $('#client_cpf').mask("000.000.000-00");
+  $('#client_rg').mask("00000000000");
+  $('#client_cell').mask("(00) 00000-0000");
+  $('#client_phone').mask("(00) 00000-0000");
 </script>

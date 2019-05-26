@@ -8,11 +8,11 @@ class ApplicationController < ActionController::Base
   check_authorization
 
   rescue_from CanCan::AccessDenied do |exception|
-    redirect_to '/', :alert => exception.message
+    redirect_to :back, :alert => exception.message
   end
 
   # Logs
-  impressionist 
+  #impressionist 
 
   helper_method :set_current_concentrator
 

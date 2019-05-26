@@ -6,8 +6,8 @@
 #  address      :string           not null
 #  city         :string           not null
 #  complement   :string           not null
-#  latitude     :decimal(, )      not null
-#  longitude    :decimal(, )      not null
+#  latitude     :decimal(, )
+#  longitude    :decimal(, )
 #  neighborhood :string           not null
 #  number       :string
 #  state        :string           not null

@@ -10,19 +10,20 @@ gem 'cocoon'
 gem 'simplecov', require: false, group: :test
 gem 'geocoder'
 gem 'plotly-rails-js'
-# Mikrotik
-gem 'mtik'
-# Logs
-gem 'impressionist'
 gem 'carrierwave', '~> 1.0'
 gem 'money-rails', '~>1.12'
 gem 'ransack'
-
 gem 'rails', '~> 5.2.0'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
+
+# Mikrotik
+gem 'mtik'
+# Logs
+gem 'impressionist'
+gem 'audited'
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby
