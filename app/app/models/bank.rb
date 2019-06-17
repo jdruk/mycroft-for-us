@@ -11,7 +11,15 @@
 
 class Bank < ApplicationRecord
 
+	# Validates
+	validates :code, presence: true
+	validates :name, presence: true
+
 	def self.available
 		Bank.order :name
+	end
+
+	def name
+		"#{name}, COD: #{code}"
 	end
 end

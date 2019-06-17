@@ -22,12 +22,13 @@
 
 class AddressRange < ApplicationRecord
 
-	# validações 
+	# Relactions
+	belongs_to :concentrator
+
+	# Validates 
 	validates :end_range, presence: true
 	validates :start_range, presence: true
 	validates :name, presence: true
 	validates :concentrator_id, presence: true
-	
-	# Relacionamentos
-	belongs_to :concentrator
+
 end

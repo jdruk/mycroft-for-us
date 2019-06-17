@@ -19,7 +19,12 @@
 #
 
 class ImageCashiero < ApplicationRecord
+
+	# Relactions
   	belongs_to :cashiero
+
+  	# Validates
+  	validates :image, presence: true
 
 	mount_uploader :image, ReceiptUploader
 end

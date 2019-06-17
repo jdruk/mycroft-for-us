@@ -30,15 +30,23 @@
 
 class Cashiero < ApplicationRecord
 
+	# Relactions
 	has_many :image_cashieros
-	accepts_nested_attributes_for :image_cashieros, reject_if: :all_blank, allow_destroy: true
-	
-
-	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }
-	enum operation: {entrada: 1, saida: 0}	
 	belongs_to :user
 	belongs_to :bank_account
 	belongs_to :category
+
+	# Validates 
+	validates :operation, presence: true
+	validates :payment_type, presence: true
+	validates :value_cents, presence: true
+	validates :value_currency, presence: true
+	validates :user_id, presence: true
+
+	accepts_nested_attributes_for :image_cashieros, reject_if: :all_blank, allow_destroy: true
+
+	enum payment_type: { dinheiro: 0, cheque: 1, "transferência bancaria" => 2 }
+	enum operation: {entrada: 1, saida: 0}	
 
 	monetize :value_cents
 end

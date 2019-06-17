@@ -15,7 +15,14 @@
 #
 
 class Client < ApplicationRecord
+
+	# Relactions
 	has_many :addresses
+
+	# Validates
+	validates :cpf, presence: true
+	validates :name, presence: true
+	validates :cell, presence: true
 
 	accepts_nested_attributes_for :addresses, reject_if: :all_blank, allow_destroy: :true
 end

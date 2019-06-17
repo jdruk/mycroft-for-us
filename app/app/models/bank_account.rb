@@ -22,8 +22,11 @@
 #
 
 class BankAccount < ApplicationRecord
+	
+	# Relactions
 	belongs_to :bank
 
+	# Validates
 	validates :account, presence: true
 	validates :agency, presence: true
 	validates :digit, presence: true

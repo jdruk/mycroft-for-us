@@ -28,8 +28,16 @@
 
 class Address < ApplicationRecord
   
-  # Relacionamentos
+  # Relactions
   belongs_to :client
+
+  # Validates
+  validates :address, presence: true
+  validates :city, presence: true
+  validates :complement, presence: true
+  validates :neighborhood, presence: true
+  validates :zip_code, presence: true
+  validates :client_id, presence: true
 
   geocoded_by :search_address
   after_validation :geocode, if: :updated?

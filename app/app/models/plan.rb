@@ -21,7 +21,7 @@ class Plan < ApplicationRecord
 		Plan.where visible: true
 	end
 
-	# validações
+	# Validates
 	validates :name, presence: true
 	validates :velocity_max_upload, presence: true
 	validates :velocity_max_download, presence: true

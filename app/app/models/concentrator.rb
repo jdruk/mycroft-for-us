@@ -16,7 +16,10 @@ require 'mtik'
 
 class Concentrator < ApplicationRecord
 
-	# validações 
+	# Relactions
+	has_many :address_ranges
+
+	# Validates 
 	validates :hostname, presence: true
 	validates :address, presence: true
 	validates :login, presence: true

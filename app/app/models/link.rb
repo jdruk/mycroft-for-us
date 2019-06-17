@@ -26,9 +26,11 @@
 
 class Link < ApplicationRecord
 
+	# Relactions
 	belongs_to :address
 	belongs_to :plan_of_data
 
+	# Validates
 	validates :address, presence: true
 	validates :login, presence: true
 	validates :password, presence: true
