@@ -1,0 +1,12 @@
+<p>
+  <strong>Velocity max upload:</strong>
+  <%= @plan.velocity_max_upload %>
+</p>
+
+<p>
+  <strong>Velocity max download:</strong>
+  <%= @plan.velocity_max_download %>
+</p>
+
+<%= link_to 'Editar', edit_plan_path(@plan), class: 'ui basic button' %> 
+<%= link_to 'Voltar', plans_path, class: 'ui basic button' %>

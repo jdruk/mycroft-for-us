@@ -16,11 +16,11 @@
 	<i class="cogs icon"></i>Concentradores
 	<% end %> 
 
-	<%= link_to plan_of_data_path, class: "#{is_current_page?(plan_of_data_path)} item" do  %>
+	<%= link_to plans_path, class: "#{is_current_page?(plans_path)} item" do  %>
 	<i class="download icon"></i>Planos de dados
 	<% end %>
 
-	<%= link_to plan_of_data_path, class: "#{is_current_page?(root_path)} item" do  %>
+	<%= link_to plans_path, class: "#{is_current_page?(root_path)} item" do  %>
 	<i class="clipboard list icon"></i>Relatórios
 	<% end %>
 <% end %>

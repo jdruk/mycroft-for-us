@@ -61,6 +61,7 @@ pt-BR:
           password: Senha
           status: Estado
           type_link: Tipo
+          plan_of_data_id: Plano
         plan_of_datum:
           name: Nome do Plano
           velocity_max_upload:  Máximo Upload 

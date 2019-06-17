@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_26_135402) do
+ActiveRecord::Schema.define(version: 2019_06_17_165554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -175,7 +175,9 @@ ActiveRecord::Schema.define(version: 2019_05_26_135402) do
     t.datetime "updated_at", null: false
     t.bigint "address_id", null: false
     t.boolean "visible", default: true, null: false
+    t.bigint "plan_id", null: false
     t.index ["address_id"], name: "index_links_on_address_id"
+    t.index ["plan_id"], name: "index_links_on_plan_id"
   end
 
   create_table "notable_jobs", force: :cascade do |t|
@@ -207,14 +209,14 @@ ActiveRecord::Schema.define(version: 2019_05_26_135402) do
     t.index ["user_id", "user_type"], name: "index_notable_requests_on_user_id_and_user_type"
   end
 
-  create_table "plan_of_data", force: :cascade do |t|
+  create_table "plans", force: :cascade do |t|
     t.integer "velocity_max_upload", null: false
     t.integer "velocity_max_download", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name", null: false
     t.boolean "visible", default: true, null: false
-    t.index ["name"], name: "index_plan_of_data_on_name", unique: true
+    t.index ["name"], name: "index_plans_on_name", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -251,4 +253,5 @@ ActiveRecord::Schema.define(version: 2019_05_26_135402) do
   add_foreign_key "cashieros", "users"
   add_foreign_key "image_cashieros", "cashieros"
   add_foreign_key "links", "addresses"
+  add_foreign_key "links", "plans"
 end

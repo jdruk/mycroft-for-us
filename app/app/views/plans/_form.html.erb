@@ -1,11 +1,11 @@
 <div class="ui left aligned segment form">
-  <%= form_with(model: plan_of_datum, local: true) do |form| %>
-    <% if plan_of_datum.errors.any? %>
+  <%= form_with(model: plan, local: true) do |form| %>
+    <% if plan.errors.any? %>
       <div id="error_explanation">
-        <h2><%= pluralize(plan_of_datum.errors.count, "error") %> prohibited this plan_of_datum from being saved:</h2>
+        <h2><%= pluralize(plan.errors.count, "error") %> prohibited this plan from being saved:</h2>
 
         <ul>
-        <% plan_of_datum.errors.full_messages.each do |message| %>
+        <% plan.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
         </ul>

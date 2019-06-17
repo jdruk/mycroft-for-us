@@ -5,7 +5,7 @@ class AddVisibleToAllModels < ActiveRecord::Migration[5.2]
   	add_column :clients, :visible, :boolean, default: true, null: false
   	add_column :concentrators, :visible, :boolean, default: true, null: false
   	add_column :links, :visible, :boolean, default: true, null: false
-  	add_column :plan_of_data, :visible, :boolean, default: true, null: false
+  	add_column :plans, :visible, :boolean, default: true, null: false
   	add_column :users, :visible, :boolean, default: true, null: false
   end
 end

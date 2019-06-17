@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: plan_of_data
+# Table name: plans
 #
 #  id                    :bigint(8)        not null, primary key
 #  name                  :string           not null
@@ -12,10 +12,14 @@
 #
 # Indexes
 #
-#  index_plan_of_data_on_name  (name) UNIQUE
+#  index_plans_on_name  (name) UNIQUE
 #
 
-class PlanOfDatum < ApplicationRecord
+class Plan < ApplicationRecord
+
+	def self.available
+		Plan.where visible: true
+	end
 
 	# validações
 	validates :name, presence: true

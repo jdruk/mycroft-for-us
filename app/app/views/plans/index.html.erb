@@ -1,0 +1,27 @@
+<h1><i class="download icon"></i>Planos</h1>
+
+<table class="ui center aligned table">
+  <thead>
+    <tr>
+      <th>Vel. max Upload </th>
+      <th>Vel. max Download</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan_of_data| %>
+      <tr>
+        <td><%= plan_of_data.velocity_max_upload %></td>
+        <td><%= plan_of_data.velocity_max_download %></td>
+        <td><%= link_to 'Informações', plan_of_data, class: 'ui grey basic button' %></td>
+        <td><%= link_to 'Editar', edit_plan_path(plan_of_data), class: 'ui black basic button' %></td>
+        <td><%= link_to 'Excluir', plan_of_data, method: :delete, data: { confirm: 'Are you sure?' }, class: 'ui red basic button' %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Novo plano', new_plan_path, class: 'ui teal basic button' %>

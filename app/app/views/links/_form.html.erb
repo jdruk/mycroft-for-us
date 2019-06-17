@@ -13,6 +13,15 @@
   <% end %>
 
   <div class="fields">
+
+    <div class="eight wide field">
+      <%= form.label :plan_of_data_id %>
+      <%= form.collection_select :plan_of_data_id,  PlanOfDatum.available, :id, :name, {}, class: "ui search dropdown" %>
+      <script type="text/javascript">
+        $('.ui.search.dropdown').dropdown();
+      </script>
+    </div>
+
     <div class="eight wide field">
       <%= form.label :login %>
       <%= form.text_field :login, required: true %>
@@ -35,7 +44,6 @@
       <%= form.number_field :type_link, required: true %>
     </div>
   </div>
-  
 
   <div class="actions">
     <%= form.submit class: 'ui blue button' %>
