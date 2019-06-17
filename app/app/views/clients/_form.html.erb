@@ -40,7 +40,7 @@
   <% end %>
 
   <div class="fields">
-    <div class="eight wide  field">
+    <div class="eight wide field">
       <%= form.label :name %>
       <%= form.text_field :name %>
     </div>
@@ -80,7 +80,6 @@
   </div>
 
   <fieldset id="addresses-patient" style="margin-bottom: 1.5em;">
-
     <ol>
       <%= form.fields_for :addresses do |address| %>
       <% render partial: 'address_fields', locals: { form: address} %>

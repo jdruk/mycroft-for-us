@@ -4,7 +4,11 @@ class ClientsController < ApplicationController
   # GET /clients
   # GET /clients.json
   def index
-    @clients = Client.all
+    @q = Client.ransack(params[:q])
+    @clients = @q.result(distinct: true) 
+    if params[:q].nil? or params[:q][:name_or_cpf_cont] == ''
+      @clients = []
+    end
   end
 
   # GET /clients/1

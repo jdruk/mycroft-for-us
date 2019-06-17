@@ -1,10 +1,22 @@
 <div class="ui aligned segment ">
   <h1><i class="users icon"></i>Clientes</h1>
 
+  <div class="ui form">
+    <%= search_form_for @q do |f| %>
+      <div class="eight wide field">
+        <%= f.label :name_or_cpf_cont %>
+        <%= f.search_field :name_or_cpf_cont %>
+      </div>
+      <div>
+        <%= f.submit class: 'ui blue button '%>
+      </div>
+    <% end %>
+  </div>
+
   <table class="ui center aligned table">
     <thead>
       <tr>
-        <th> <i class="user icon"></i>Nome</th>
+        <th> <i class="user icon"></i><%= sort_link(@q, :name) %></th>
         <th><i class="key icon"></i>Cpf</th>
         <th colspan="3" class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
       </tr>

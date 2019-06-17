@@ -54,11 +54,6 @@
   <%= @concentrator.login %>
 </p>
 
-<p>
-  <strong>Password:</strong>
-  <%= @concentrator.password %>
-</p>
-
 <%= link_to 'Editar', edit_concentrator_path(@concentrator), class: 'ui basic button' %> 
 <%= link_to 'Voltar', concentrators_path, class: 'ui basic button' %>
 
@@ -79,7 +74,7 @@
 
   var interval = setInterval(function() {
     $.post("<%= info_concentrator_path %>",{
-      id: 5})
+      id: <%= @concentrator.id %>})
     .done(function(data){
 
 
