@@ -1,11 +1,25 @@
 <tr id=<%= user.id %> class=<%= 'error' unless user.approved%>>
-	<td><%= user.name %></td>
-	<td><%= user.email %></td>
-    <td data-tooltip="Log e demais informações" data-position="top left" data-inverted=""><%= link_to 'Detalhes', user, class: 'ui basic button' %></td>
-    <td data-tooltip="Editar usuário" data-position="top left" data-inverted=""><%= link_to 'Editar', edit_user_path(user), class: 'ui black basic button' %></td>
-    <td data-tooltip="Excluir usuário" data-position="top left" data-inverted=""><%= link_to 'Excluir', user, method: :delete, data: { confirm: 'Deseja excluir?' }, class: 'ui red basic button'%></td>
-    <td td data-tooltip="Click para alterar o estado" data-position="top left" data-inverted="">
-    	<%=link_to  user.status_sanitized, change_user_path(user), class: "ui basic #{user.status_login} button", id: "#{user.id}_button", remote: true, method: :post %>
+	<td>
+		<%= user.name %>
+			
+		</td>
+	<td>
+		<%= user.email %>
+			
+		</td>
+    <td>
+    	<%= link_to 'Detalhes', user, class: 'ui basic button', 'data-tooltip'=>"Log e demais informações", 'data-position'=>"top left", 'data-inverted'=>"" %>
+    		
+    	</td>
+    <td>
+    	<%= link_to 'Editar', edit_user_path(user), class: 'ui black basic button',
+    	'data-tooltip'=>"Editar usuário", 'data-position'=>"top left", 'data-inverted'=>"" %>
+    </td>
+    <td>
+    	<%= link_to 'Excluir', user, method: :delete, data: { confirm: 'Deseja excluir?' },'data-tooltip'=>"Excluir usuário", 'data-position'=>"top left", 'data-inverted'=>"", class: 'ui red basic button'%>
+    </td>
+    <td>
+    	<%=link_to  user.status_sanitized, change_user_path(user), class: "ui basic #{user.status_login} button", id: "#{user.id}_button", remote: true, method: :post, 'data-tooltip'=>"Click para alterar o estado", 'data-position'=>"top left", 'data-inverted'=>""%>
     </td>
     
 </tr>

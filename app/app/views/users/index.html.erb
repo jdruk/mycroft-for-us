@@ -1,24 +1,21 @@
-<div class="ui aligned segment ">
-  <h1><i class="user icon"></i>Usuários</h1>
 
-  <table id="users" class="ui center aligned celled table ">
-    <thead>
-      <tr>
-        <th><i class="address book icon"></i>Nome</th>
-        <th><i class="envelope icon"></i>Email</th>
-        <th><i class="newspaper icon"></i>Notas</th>
-        <th colspan="3" align="center" class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
-      </tr>
-    </thead>
+<h1><i class="user icon"></i>Usuários</h1>
 
-    <tbody>
-      <%= render @users %>
-    </tbody>
-  </table>
+<table id="users" class="ui center aligned celled table ">
+  <thead>
+    <tr>
+      <th><i class="address book icon"></i>Nome</th>
+      <th><i class="envelope icon"></i>Email</th>
+      <th><i class="newspaper icon"></i>Notas</th>
+      <th colspan="3" align="center" class="ui center aligned"><i class="clipboard icon"></i>Ações</th>
+    </tr>
+  </thead>
 
-  <br>
+  <tbody>
+    <%= render @users %>
+  </tbody>
+</table>
 
-  <div id="new-user">
-    <%= link_to 'Novo Usuário', new_user_path, remote: true, class: 'ui basic teal button' %>
-  </div>
+<div id="new-user">
+  <%= link_to 'Novo Usuário', new_user_path, remote: true, class: 'ui basic teal button' %>
 </div>
