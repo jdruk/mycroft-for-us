@@ -20,6 +20,7 @@ module App
     config.i18n.default_locale = 'pt-BR'
     #config.active_record.raise_in_transactional_callbacks = true
     
+    config.middleware.insert_after ActionDispatch::Static, Rack::Deflater
 	config.assets.paths << Rails.root.join("app", "assets", "fonts")
   end
 end

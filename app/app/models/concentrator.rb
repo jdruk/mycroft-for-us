@@ -26,6 +26,10 @@ class Concentrator < ApplicationRecord
 		test_conection[:success]
 	end
 
+	def self.available
+		Concentrator.where visible: true
+	end
+
 	def test_conection
 		begin
         	mk = MTik::command(host: address, user: login, pass: password, command: '/ip/address/print', conn_timeout: 5)

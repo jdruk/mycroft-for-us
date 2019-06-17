@@ -24,6 +24,7 @@ gem 'mtik'
 # Logs
 gem 'impressionist'
 gem 'audited'
+gem 'notable' # performace
 
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'mini_racer', platforms: :ruby

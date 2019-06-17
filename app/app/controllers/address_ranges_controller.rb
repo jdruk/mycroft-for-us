@@ -1,5 +1,6 @@
 class AddressRangesController < ApplicationController
   before_action :set_address_range, only: [:show, :edit, :update, :destroy]
+  before_action :set_concentrator
 
   # GET /address_ranges
   # GET /address_ranges.json
@@ -25,10 +26,10 @@ class AddressRangesController < ApplicationController
   # POST /address_ranges.json
   def create
     @address_range = AddressRange.new(address_range_params)
-
+    @address_range.concentrator = @concentrator
     respond_to do |format|
       if @address_range.save
-        format.html { redirect_to @address_range, notice: 'Address range was successfully created.' }
+        format.html { redirect_to [@concentrator, @address_range], notice: 'Address range was successfully created.' }
         format.json { render :show, status: :created, location: @address_range }
       else
         format.html { render :new }
@@ -42,7 +43,7 @@ class AddressRangesController < ApplicationController
   def update
     respond_to do |format|
       if @address_range.update(address_range_params)
-        format.html { redirect_to @address_range, notice: 'Address range was successfully updated.' }
+        format.html { redirect_to [@concentrator, @address_range], notice: 'Address range was successfully updated.' }
         format.json { render :show, status: :ok, location: @address_range }
       else
         format.html { render :edit }
@@ -56,7 +57,7 @@ class AddressRangesController < ApplicationController
   def destroy
     @address_range.destroy
     respond_to do |format|
-      format.html { redirect_to address_ranges_url, notice: 'Address range was successfully destroyed.' }
+      format.html { redirect_to concentrator_address_ranges_url, notice: 'Address range was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,6 +66,10 @@ class AddressRangesController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_address_range
       @address_range = AddressRange.find(params[:id])
+    end
+
+    def set_concentrator
+      @concentrator = Concentrator.find(params[:concentrator_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

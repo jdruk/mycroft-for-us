@@ -2,6 +2,7 @@ pt-BR:
     activerecord:
       models:
         address: Endereço
+        address_range: IP Pool 
         bank_account: Conta
         cashiero: Caixa
         client: Cliente
@@ -10,7 +11,7 @@ pt-BR:
         plan_of_datum: Plano de dados
         category: Categoria
         image_cashiero: Comprovante 
-        image_cashieros: Comprovante 
+        image_cashieros: Comprovante
       attributes:
         address: 
           zip_code: CEP
@@ -23,6 +24,11 @@ pt-BR:
           state: Estado
           neighborhood: Bairro
           complement: Complemento
+        address_range:
+          name: Nome
+          start_range: Ip de inicio
+          end_range: Ip final
+          concentrator_id: Concentrador
         cashiero:
           description: Descrição
           operation: Operação

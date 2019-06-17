@@ -4,8 +4,7 @@ Rails.application.routes.draw do
   get 'financial/dashboard', to: "financial#dashboard", as: 'financial_dashboard'
   resources :cashieros
   root "index#index"
-
-  resources :address_ranges
+  
   resources :bank_accounts
   resources :categories
   resources :clients do
@@ -15,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   # Concentradores
-  resources :concentrators
+  resources :concentrators do 
+    resources :address_ranges
+  end
   post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'
   post 'info_concentrator/:id', to: "concentrators#concentrator_info", as: 'info_concentrator'
 

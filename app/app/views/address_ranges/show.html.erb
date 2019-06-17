@@ -1,24 +1,23 @@
-<p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @address_range.name %>
 </p>
 
 <p>
-  <strong>Start range:</strong>
+  <strong>Inicio:</strong>
   <%= @address_range.start_range %>
 </p>
 
 <p>
-  <strong>End range:</strong>
+  <strong>Fim:</strong>
   <%= @address_range.end_range %>
 </p>
 
 <p>
   <strong>Concentrator:</strong>
-  <%= @address_range.concentrator %>
+  <%= @address_range.concentrator.hostname %>
 </p>
 
-<%= link_to 'Edit', edit_address_range_path(@address_range) %> |
-<%= link_to 'Back', address_ranges_path %>
+<%= link_to 'Editar', edit_concentrator_address_range_path(@concentrator, @address_range), class: 'ui basic button' %> 
+<%= link_to 'Voltar', concentrator_address_ranges_path(@concentrator), class: 'ui basic button' %>

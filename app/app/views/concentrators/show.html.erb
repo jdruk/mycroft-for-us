@@ -1,4 +1,28 @@
 <% set_current_concentrator(@concentrator) %>
+
+<div class="ui menu">
+  <div class="ui dropdown item">
+    Configurações <i class="dropdown icon"></i>
+    <div class="menu">
+      <%= link_to  concentrator_address_ranges_path(@concentrator), class: 'ui item button' do %>
+      <i class="list icon" ></i>Ip Pool
+      <% end %>
+    </div>
+  </div>
+  <div class="right menu">
+    <div class="item">
+      <div class="ui transparent icon input">
+        <input type="text" placeholder="Search...">
+        <i class="search link icon"></i>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(".ui.dropdown").dropdown();
+</script>
+
 <div class="ui grid">
   <div class="row">
     <div class="sixteen wide column" >
@@ -57,7 +81,7 @@
     $.post("<%= info_concentrator_path %>",{
       id: 5})
     .done(function(data){
-      
+
 
       cpu_free = 100 - data.cpu_and_memory[0]['cpu-load'];
       cpu_use =  data.cpu_and_memory[0]['cpu-load'];
