@@ -8,7 +8,7 @@ pt-BR:
         client: Cliente
         concentrator: Concentrador
         link: Link de dados
-        plan_of_datum: Plano de dados
+        plan: Plano de dados
         category: Categoria
         image_cashiero: Comprovante 
         image_cashieros: Comprovante
@@ -61,8 +61,8 @@ pt-BR:
           password: Senha
           status: Estado
           type_link: Tipo
-          plan_of_data_id: Plano
-        plan_of_datum:
+          plan_id: Plano
+        plan:
           name: Nome do Plano
           velocity_max_upload:  Máximo Upload 
           velocity_max_download: Máximo Download
