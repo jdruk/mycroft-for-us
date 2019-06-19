@@ -1,41 +1,37 @@
 <!-- alert notification -->
 <% if notice %>
-<p></p>
-<div class="ui container">
-  <div class="ui message">
-    <i class="close icon"></i>
-    <div class="header">
-      Notificação!
-    </div>
-    <p><%= notice %></p>
-  </div>
-</div>
+  <script type="text/javascript">
+    $('body')
+      .toast({
+        title: 'Mensagem',
+        message: '<%=  notice  %>',
+        showProgress: 'bottom'
+      });
+  </script>
 <% end %>
 
 <!-- alert warning -->
 <% if alert %>
-<p></p>
-<div class="ui warning container">
-  <div class="ui message">
-    <i class="close icon"></i>
-    <div class="header">
-      Alerta!
-    </div>
-    <p><%= alert %></p>
-  </div>
-</div>
+  <script type="text/javascript">
+    $('body')
+      .toast({
+        class: 'error',
+        title: 'Mensagem',
+        message: '<%=  alert  %>',
+        showProgress: 'bottom'
+      });
+  </script>
 <% end %>
 
 <!-- alert success -->
 <% if flash[:success] %>
-<p></p>
-<div class="ui container">
-  <div class="ui positive message">
-    <i class="close icon"></i>
-    <div class="header">
-      Sucesso!
-    </div>
-    <p><%= flash[:success] %></p>
-  </div>
-</div>
+  <script type="text/javascript">
+    $('body')
+      .toast({
+        class: 'success',
+        title: 'Mensagem',
+        message: '<%=  flash[:success]  %>',
+        showProgress: 'bottom'
+      });
+  </script>
 <% end %>

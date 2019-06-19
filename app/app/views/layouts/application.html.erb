@@ -53,7 +53,6 @@
 		
 		<!-- Conteudo principal -->
 		<div  class="fourteen wide sixteen mobile column container" style="margin-top: 2.5%;">
-			<%= render 'layouts/alert_messages' %>
 			<%= yield %>
 		</div>
 		<!-- Conteudo principal -->
@@ -68,5 +67,6 @@
 		});
 		$('.ui.sidebar').sidebar('attach events', '#mobile_item');
 	</script>
+	<%= render 'layouts/alert_messages' %>
 </body>
 </html>
