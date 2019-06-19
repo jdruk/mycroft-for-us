@@ -19,7 +19,4 @@ class Bank < ApplicationRecord
 		Bank.order :name
 	end
 
-	def name
-		"#{name}, COD: #{code}"
-	end
 end

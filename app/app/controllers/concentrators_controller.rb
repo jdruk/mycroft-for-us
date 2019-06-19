@@ -33,6 +33,7 @@ class ConcentratorsController < ApplicationController
   # GET /concentrators/new
   def new
     @concentrator = Concentrator.new
+    @concentrator.build_address_range
   end
 
   # GET /concentrators/1/edit
@@ -87,6 +88,7 @@ class ConcentratorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def concentrator_params
-      params.require(:concentrator).permit(:hostname, :address, :login, :password)
+      params.require(:concentrator).permit(:hostname, :address, :login, :password, :address_range_id, 
+        address_range_attributes: [:id, :name, :start_range, :end_range, :concentrator_id])
     end
 end

@@ -15,7 +15,7 @@
 #  zip_code     :string           not null
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  client_id    :bigint(8)
+#  client_id    :bigint(8)        not null
 #
 # Indexes
 #

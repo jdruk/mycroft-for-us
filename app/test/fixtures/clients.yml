@@ -3,7 +3,7 @@
 # Table name: clients
 #
 #  id          :bigint(8)        not null, primary key
-#  cell        :string
+#  cell        :string           not null
 #  cpf         :string           not null
 #  description :text
 #  name        :string           not null

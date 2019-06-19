@@ -4,7 +4,7 @@ class CreateAddressRanges < ActiveRecord::Migration[5.2]
       t.string :name, null: false
       t.inet :start_range, null: false
       t.inet :end_range, null: false
-      t.references :concentrator, foreign_key: true, null: false
+      t.references :concentrator, foreign_key: true
 
       t.timestamps
     end

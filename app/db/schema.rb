@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_17_165554) do
+ActiveRecord::Schema.define(version: 2019_06_18_212024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,7 +30,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_165554) do
     t.string "zip_code", null: false
     t.string "address", null: false
     t.string "number"
-    t.bigint "client_id"
+    t.bigint "client_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "latitude"
@@ -116,7 +116,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_165554) do
     t.datetime "updated_at", null: false
     t.boolean "visible", default: true, null: false
     t.string "rg"
-    t.string "cell"
+    t.string "cell", null: false
     t.string "phone"
     t.text "description"
   end
@@ -129,6 +129,8 @@ ActiveRecord::Schema.define(version: 2019_06_17_165554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "visible", default: true, null: false
+    t.bigint "address_range_id"
+    t.index ["address_range_id"], name: "index_concentrators_on_address_range_id"
   end
 
   create_table "image_cashieros", force: :cascade do |t|
@@ -138,32 +140,6 @@ ActiveRecord::Schema.define(version: 2019_06_17_165554) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cashiero_id"], name: "index_image_cashieros_on_cashiero_id"
-  end
-
-  create_table "impressions", force: :cascade do |t|
-    t.string "impressionable_type"
-    t.integer "impressionable_id"
-    t.integer "user_id"
-    t.string "controller_name"
-    t.string "action_name"
-    t.string "view_name"
-    t.string "request_hash"
-    t.string "ip_address"
-    t.string "session_hash"
-    t.text "message"
-    t.text "referrer"
-    t.text "params"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["controller_name", "action_name", "ip_address"], name: "controlleraction_ip_index"
-    t.index ["controller_name", "action_name", "request_hash"], name: "controlleraction_request_index"
-    t.index ["controller_name", "action_name", "session_hash"], name: "controlleraction_session_index"
-    t.index ["impressionable_type", "impressionable_id", "ip_address"], name: "poly_ip_index"
-    t.index ["impressionable_type", "impressionable_id", "params"], name: "poly_params_request_index"
-    t.index ["impressionable_type", "impressionable_id", "request_hash"], name: "poly_request_index"
-    t.index ["impressionable_type", "impressionable_id", "session_hash"], name: "poly_session_index"
-    t.index ["impressionable_type", "message", "impressionable_id"], name: "impressionable_type_message_index"
-    t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
   create_table "links", force: :cascade do |t|
@@ -251,6 +227,7 @@ ActiveRecord::Schema.define(version: 2019_06_17_165554) do
   add_foreign_key "cashieros", "bank_accounts"
   add_foreign_key "cashieros", "categories"
   add_foreign_key "cashieros", "users"
+  add_foreign_key "concentrators", "address_ranges"
   add_foreign_key "image_cashieros", "cashieros"
   add_foreign_key "links", "addresses"
   add_foreign_key "links", "plans"

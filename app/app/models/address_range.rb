@@ -29,6 +29,5 @@ class AddressRange < ApplicationRecord
 	validates :end_range, presence: true
 	validates :start_range, presence: true
 	validates :name, presence: true
-	validates :concentrator_id, presence: true
 
 end

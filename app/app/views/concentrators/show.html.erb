@@ -1,11 +1,12 @@
-<% set_current_concentrator(@concentrator) %>
-
 <div class="ui menu">
   <div class="ui dropdown item">
     Configurações <i class="dropdown icon"></i>
     <div class="menu">
-      <%= link_to  concentrator_address_ranges_path(@concentrator), class: 'ui item button' do %>
-      <i class="list icon" ></i>Ip Pool
+      <%= link_to  concentrator_address_ranges_path(@concentrator), class: 'ui item' do %>
+        <i class="list icon" ></i>IP Pool
+      <% end %>
+      <%= link_to edit_concentrator_path(@concentrator), class: 'ui item' do %>
+        <i class="list icon" ></i>Concentrador
       <% end %>
     </div>
   </div>
@@ -54,7 +55,6 @@
   <%= @concentrator.login %>
 </p>
 
-<%= link_to 'Editar', edit_concentrator_path(@concentrator), class: 'ui basic button' %> 
 <%= link_to 'Voltar', concentrators_path, class: 'ui basic button' %>
 
 <script type="text/javascript">
