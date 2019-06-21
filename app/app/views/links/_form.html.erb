@@ -16,7 +16,7 @@
 
     <div class="eight wide field">
       <%= form.label :plan_of_data_id %>
-      <%= form.collection_select :plan_of_data_id,  PlanOfDatum.available, :id, :name, {}, class: "ui search dropdown" %>
+      <%= form.collection_select :plan_id,  Plan.available, :id, :name, {}, class: "ui search dropdown" %>
       <script type="text/javascript">
         $('.ui.search.dropdown').dropdown();
       </script>
@@ -42,6 +42,11 @@
     <div class="eight wide field">
       <%= form.label :type_link %>
       <%= form.number_field :type_link, required: true %>
+    </div>
+
+    <div class="eight wide field">
+      <%= form.label :address_range_id %>
+      <%= form.grouped_collection_select :address_range_id, Concentrator.order(:hostname), :address_ranges, :hostname, :id, :name %>
     </div>
   </div>
 

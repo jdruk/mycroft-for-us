@@ -37,7 +37,7 @@ class Address < ApplicationRecord
   validates :complement, presence: true
   validates :neighborhood, presence: true
   validates :zip_code, presence: true
-  validates :client_id, presence: true
+  #validates :client_id, presence: true
 
   geocoded_by :search_address
   after_validation :geocode, if: :updated?

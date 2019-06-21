@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_18_212024) do
+ActiveRecord::Schema.define(version: 2019_06_21_181319) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -152,7 +152,9 @@ ActiveRecord::Schema.define(version: 2019_06_18_212024) do
     t.bigint "address_id", null: false
     t.boolean "visible", default: true, null: false
     t.bigint "plan_id", null: false
+    t.bigint "address_range_id"
     t.index ["address_id"], name: "index_links_on_address_id"
+    t.index ["address_range_id"], name: "index_links_on_address_range_id"
     t.index ["plan_id"], name: "index_links_on_plan_id"
   end
 
@@ -229,6 +231,7 @@ ActiveRecord::Schema.define(version: 2019_06_18_212024) do
   add_foreign_key "cashieros", "users"
   add_foreign_key "concentrators", "address_ranges"
   add_foreign_key "image_cashieros", "cashieros"
+  add_foreign_key "links", "address_ranges"
   add_foreign_key "links", "addresses"
   add_foreign_key "links", "plans"
 end
