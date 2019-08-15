@@ -9,10 +9,16 @@
 #  visible               :boolean          default(TRUE), not null
 #  created_at            :datetime         not null
 #  updated_at            :datetime         not null
+#  address_range_id      :bigint(8)        not null
 #
 # Indexes
 #
-#  index_plans_on_name  (name) UNIQUE
+#  index_plans_on_address_range_id  (address_range_id)
+#  index_plans_on_name              (name) UNIQUE
+#
+# Foreign Keys
+#
+#  fk_rails_...  (address_range_id => address_ranges.id)
 #
 
 class Plan < ApplicationRecord
@@ -25,4 +31,5 @@ class Plan < ApplicationRecord
 	validates :name, presence: true
 	validates :velocity_max_upload, presence: true
 	validates :velocity_max_download, presence: true
+	validates :address_range, presence: true
 end
