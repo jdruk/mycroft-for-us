@@ -4,11 +4,15 @@
 
 <% if current_user.admin? %>
 
-	<%= link_to users_path, class: "#{is_current_page?(users_path)} item" do  %>
-	<i class="user circle icon"></i>Usuários
+  <%= link_to dashboard_path, class: "#{is_current_page?(dashboard_path)} item" do  %> 
+  <i class="chart area icon"></i>Dashboard
 	<% end %> 
 
-	<%= link_to clients_path, class: "#{is_current_page?(clients_path)} item" do  %>
+  <%= link_to users_path, class: "#{is_current_page?(users_path)} item" do  %> 
+  <i class="user circle icon"></i>Usuários
+	<% end %> 
+  
+  <%= link_to clients_path, class: "#{is_current_page?(clients_path)} item" do  %>
 	<i class="users circle icon"></i>Clientes
 	<% end %>
 

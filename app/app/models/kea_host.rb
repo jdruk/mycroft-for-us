@@ -7,6 +7,7 @@ class KeaHost < ApplicationRecord
     'host_id'
   end
 
+  # Relations
   belongs_to :kea_host_identifier_type, class_name: 'KeaHostIdentifierType', foreign_key: 'dhcp_identifier_type', primary_key: 'type' 
 
 end
