@@ -27,7 +27,9 @@ class Plan < ApplicationRecord
 		Plan.where visible: true
 	end
 
-	# Validates
+	has_one :address_range
+	
+  # Validates
 	validates :name, presence: true
 	validates :velocity_max_upload, presence: true
 	validates :velocity_max_download, presence: true

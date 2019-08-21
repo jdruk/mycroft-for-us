@@ -69,6 +69,6 @@ class PlansController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plan_params
-      params.require(:plan).permit(:name, :velocity_max_upload, :velocity_max_download)
+      params.require(:plan).permit(:name, :velocity_max_upload, :velocity_max_download, address_range_attributes: [:id, :name, :start_range, :end_range, :concentrator_id])
     end
 end

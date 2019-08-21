@@ -1,7 +1,8 @@
 class ConcentratorsController < ApplicationController
 
-  before_action :set_concentrator, only: [:show, :edit, :update, :destroy]
-
+  before_action :set_concentrator, only: [:show, :edit, :update, :destroy, :concentrator_info]
+  protect_from_forgery only: [:test_concentrator]
+  
   def test_concentrator
     concentrator = Concentrator.new hostname: params[:hostname],
                     address: params[:address],
@@ -15,7 +16,7 @@ class ConcentratorsController < ApplicationController
 
   def concentrator_info
     respond_to do |format|
-       format.json { render json: current_concentrator.info_concentrator.to_json, status: current_concentrator.info_concentrator[:status] }
+       format.json { render json: @concentrator.info_concentrator.to_json, status: @concentrator.info_concentrator[:status] }
     end
   end
 

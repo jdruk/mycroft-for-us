@@ -27,7 +27,6 @@ class Concentrator < ApplicationRecord
 
 	# Relactions
 	has_many :address_ranges
-	#belongs_to :address_range
 	has_one :address_range
 
 	# Validates 
