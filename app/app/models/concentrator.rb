@@ -20,8 +20,7 @@
 #
 #  fk_rails_...  (address_range_id => address_ranges.id)
 #
-
-require 'mtik'
+require 'mikrotik'
 
 class Concentrator < ApplicationRecord
 
@@ -38,35 +37,21 @@ class Concentrator < ApplicationRecord
 	accepts_nested_attributes_for :address_range
 
 	def online?
-		test_conection[:success]
+		status = test_conection
+    status[:success]
 	end
 
 	def self.available
 		Concentrator.where visible: true
 	end
 
-	def test_conection
-		begin
-        	mk = MTik::command(host: address, user: login, pass: password, command: '/ip/address/print', conn_timeout: 5)
-        	{message: mk, success: true, status: :ok}
-      	rescue Exception=> e
-       		{message: e.message , success: false, status: :error}
-      	end
-	end
+  def test_conection
+    Mikrotik.test_conection self
+  end
 
 	def info_concentrator
 		if(online?)
-			begin
-				mtik = MTik::Connection.new host: address, user: login, pass: password, conn_timeout: 1
-				cpu_and_memory = mtik.get_reply '/system/resource/print'
-				network = mtik.get_reply '/interface/monitor-traffic',
-					'=interface=aggregate',
-					'=.proplist=rx-bits-per-second,tx-bits-per-second',
-					'=once='
-				{success: true, cpu_and_memory: cpu_and_memory, network: network, status: :ok}
-      		rescue Exception=> e
-       			{ success: false, status: :error}
-      		end			
-		end
+      Mikrotik.throughput self
+    end
 	end
 end

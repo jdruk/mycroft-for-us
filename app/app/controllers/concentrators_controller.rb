@@ -8,7 +8,6 @@ class ConcentratorsController < ApplicationController
                     address: params[:address],
                     login: params[:login],
                     password: params[:password]
-
     respond_to do |format|
       format.json { render json: concentrator.test_conection.to_json, status: concentrator.test_conection[:status] }
     end

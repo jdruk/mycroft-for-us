@@ -1,0 +1,32 @@
+<div class="ui aligned segment ">
+  <h1>Gateways</h1>
+
+  <table class="ui center aligned table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Endereço Host</th>
+        <th>Interface</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @gateways.each do |gateway| %>
+        <tr>
+          <td><%= gateway.name %></td>
+          <td><%= gateway.address %></td>
+          <td><%= gateway.interface %></td>
+          <td><%= link_to 'Detalhes', concentrator_gateway_path(@concentrator, gateway), 'data-tooltip'=>"Informações do gateway" ,'data-position' => "top left", 'data-inverted'=>"",class: 'ui grey basic button' %></td>
+          <td><%= link_to 'Editar', edit_concentrator_gateway_path(@concentrator, gateway), 'data-tooltip'=>"Editar informações do gateway" ,'data-position' => "top left", 'data-inverted'=>"",
+           class: 'ui black basic button' %></td>
+          <td><%= link_to 'Excluir', [@concentrator, gateway], 'data-tooltip'=>"Excluir link" ,'data-position' => "top left", 'data-inverted'=>"", class: 'ui red basic button', method: :delete, data: { confirm: 'Você realmente deseja excluir este gateway?'} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <br>
+
+  <%= link_to 'Novo gateway', new_concentrator_gateway_path, class: 'ui teal basic button', 'data-tooltip'=>"Adicionar um novo gateway",'data-position' => "top left", 'data-inverted'=>"" %>
+</div>

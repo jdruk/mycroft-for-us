@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_15_143322) do
+ActiveRecord::Schema.define(version: 2019_08_22_180024) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -165,6 +165,16 @@ ActiveRecord::Schema.define(version: 2019_08_15_143322) do
 
   create_table "dhcp_option_scope", primary_key: "scope_id", id: :integer, limit: 2, default: nil, force: :cascade do |t|
     t.string "scope_name", limit: 32
+  end
+
+  create_table "gateways", force: :cascade do |t|
+    t.string "name", null: false
+    t.inet "address", null: false
+    t.bigint "concentrator_id", null: false
+    t.string "interface", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["concentrator_id"], name: "index_gateways_on_concentrator_id"
   end
 
   create_table "host_identifier_type", primary_key: "type", id: :integer, limit: 2, default: nil, force: :cascade do |t|
@@ -378,6 +388,7 @@ ActiveRecord::Schema.define(version: 2019_08_15_143322) do
   add_foreign_key "dhcp4_options", "hosts", primary_key: "host_id", name: "fk_options_host1", on_delete: :cascade
   add_foreign_key "dhcp6_options", "dhcp_option_scope", column: "scope_id", primary_key: "scope_id", name: "fk_dhcp6_option_scode", on_delete: :cascade
   add_foreign_key "dhcp6_options", "hosts", primary_key: "host_id", name: "fk_options_host10", on_delete: :cascade
+  add_foreign_key "gateways", "concentrators"
   add_foreign_key "hosts", "host_identifier_type", column: "dhcp_identifier_type", primary_key: "type", name: "fk_host_identifier_type", on_delete: :cascade
   add_foreign_key "image_cashieros", "cashieros"
   add_foreign_key "ipv6_reservations", "hosts", primary_key: "host_id", name: "fk_ipv6_reservations_host", on_delete: :cascade

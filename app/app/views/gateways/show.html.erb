@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gateway.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @gateway.address %>
+</p>
+
+<p>
+  <strong>Concentrator:</strong>
+  <%= @gateway.concentrator %>
+</p>
+
+<p>
+  <strong>Interface:</strong>
+  <%= @gateway.interface %>
+</p>
+
+<%= link_to 'Edit', edit_gateway_path(@gateway) %> |
+<%= link_to 'Back', gateways_path %>

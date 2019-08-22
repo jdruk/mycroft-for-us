@@ -15,6 +15,7 @@ Rails.application.routes.draw do
 
   # Concentradores
   resources :concentrators do 
+    resources :gateways
     resources :address_ranges
   end
   post 'test_concentrator/', to: "concentrators#test_concentrator", as: 'test_concentrator'

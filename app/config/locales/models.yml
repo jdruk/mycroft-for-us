@@ -12,6 +12,7 @@ pt-BR:
         category: Categoria
         image_cashiero: Comprovante 
         image_cashieros: Comprovante
+        gateway: Gateway
       attributes:
         address: 
           zip_code: CEP
@@ -74,3 +75,8 @@ pt-BR:
           agency: Agência
         image_cashiero:
           image: Imagem
+        gateway:
+          name: Nome
+          concentrator_id: Concentrador
+          interface: Interface
+          address: Endereço do Host
