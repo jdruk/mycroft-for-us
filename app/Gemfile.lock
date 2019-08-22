@@ -150,7 +150,7 @@ GEM
     msgpack (1.2.10)
     mtik (4.0.3)
     nio4r (2.3.1)
-    nokogiri (1.10.3)
+    nokogiri (1.10.4)
       mini_portile2 (~> 2.4.0)
     notable (0.2.2)
       request_store
@@ -287,6 +287,7 @@ DEPENDENCIES
   loofah (>= 2.2.3)
   money-rails (~> 1.12)
   mtik
+  nokogiri (>= 1.10.4)
   notable
   pg (>= 0.18, < 2.0)
   plotly-rails-js
