@@ -23,4 +23,18 @@ module Mikrotik
           { success: false, status: :error}
       end			
   end 
+
+  def Mikrotik.interfaces concentrator, timeout = 5
+    interfaces = Hash.new
+		begin
+      mikt = MTik::command(host: concentrator.address, user: concentrator.login, pass: concentrator.password, command: '/interface/print', conn_timeout: timeout)
+      mikt[0].each do |interface|
+        interface = interface["name"]
+        interfaces[interface] = interface
+      end 
+      interfaces
+    rescue Exception=> e
+      interfaces
+    end
+  end
 end 

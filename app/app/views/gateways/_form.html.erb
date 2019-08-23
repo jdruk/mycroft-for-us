@@ -24,7 +24,7 @@
 
     <div class="field">
       <%= form.label :interface %>
-      <%= form.collection_select :interface,  Mikrotik::Interafaces.available, :name, :name, {}, class: "ui search dropdown" %>
+      <%= form.select :interface, @concentrator.interfaces.each{ |k, v| [v, v]}, { include_blank: false }, class: 'ui search dropdown' %> 
       <script type="text/javascript">
         $('.ui.search.dropdown').dropdown();
       </script>

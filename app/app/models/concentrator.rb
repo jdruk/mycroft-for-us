@@ -54,4 +54,8 @@ class Concentrator < ApplicationRecord
       Mikrotik.throughput self
     end
 	end
+
+  def interfaces
+    Mikrotik.interfaces self  
+  end
 end

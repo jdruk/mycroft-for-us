@@ -29,7 +29,7 @@ class GatewaysController < ApplicationController
     @gateway.concentrator = @concentrator
     respond_to do |format|
       if @gateway.save
-        format.html { redirect_to @gateway, notice: 'Gateway was successfully created.' }
+        format.html { redirect_to [@concentrator, @gateway], notice: 'Gateway was successfully created.' }
         format.json { render :show, status: :created, location: @gateway }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class GatewaysController < ApplicationController
   def update
     respond_to do |format|
       if @gateway.update(gateway_params)
-        format.html { redirect_to @gateway, notice: 'Gateway was successfully updated.' }
+        format.html { redirect_to [@concentrator, @gateway], notice: 'Gateway was successfully updated.' }
         format.json { render :show, status: :ok, location: @gateway }
       else
         format.html { render :edit }
@@ -57,7 +57,7 @@ class GatewaysController < ApplicationController
   def destroy
     @gateway.destroy
     respond_to do |format|
-      format.html { redirect_to gateways_url, notice: 'Gateway was successfully destroyed.' }
+      format.html { redirect_to concentrator_gateways_path(@concentrator), notice: 'Gateway was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -75,4 +75,4 @@ class GatewaysController < ApplicationController
     def gateway_params
       params.require(:gateway).permit(:name, :address, :concentrator_id, :interface)
     end
-end
+end 

@@ -1,18 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Name:</strong>
+  <strong>Nome:</strong>
   <%= @gateway.name %>
 </p>
 
 <p>
-  <strong>Address:</strong>
+  <strong>Endereço:</strong>
   <%= @gateway.address %>
 </p>
 
 <p>
-  <strong>Concentrator:</strong>
-  <%= @gateway.concentrator %>
+  <strong>Concentrador:</strong>
+  <%= @gateway.concentrator.hostname %>
 </p>
 
 <p>
@@ -20,5 +18,5 @@
   <%= @gateway.interface %>
 </p>
 
-<%= link_to 'Edit', edit_gateway_path(@gateway) %> |
-<%= link_to 'Back', gateways_path %>
+<%= link_to 'Editar', edit_concentrator_gateway_path(@concentrator, @gateway), class: 'ui basic button' %> 
+<%= link_to 'Voltar', concentrator_gateways_path(@concentrator), class: 'ui basic button' %>
