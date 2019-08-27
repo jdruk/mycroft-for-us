@@ -6,6 +6,7 @@
 #  address         :inet             not null
 #  interface       :string           not null
 #  name            :string           not null
+#  netmask         :inet             not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  concentrator_id :bigint(8)        not null

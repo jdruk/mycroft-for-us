@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_22_180024) do
+ActiveRecord::Schema.define(version: 2019_08_23_183548) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -133,40 +133,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
     t.index ["address_range_id"], name: "index_concentrators_on_address_range_id"
   end
 
-  create_table "dhcp4_options", primary_key: "option_id", id: :serial, force: :cascade do |t|
-    t.integer "code", limit: 2, null: false
-    t.binary "value"
-    t.text "formatted_value"
-    t.string "space", limit: 128
-    t.boolean "persistent", default: false, null: false
-    t.string "dhcp_client_class", limit: 128
-    t.bigint "dhcp4_subnet_id"
-    t.integer "host_id"
-    t.integer "scope_id", limit: 2, null: false
-    t.text "user_context"
-    t.index ["host_id"], name: "fk_dhcp4_options_host1_idx"
-    t.index ["scope_id"], name: "fk_dhcp4_options_scope_idx"
-  end
-
-  create_table "dhcp6_options", primary_key: "option_id", id: :serial, force: :cascade do |t|
-    t.integer "code", null: false
-    t.binary "value"
-    t.text "formatted_value"
-    t.string "space", limit: 128
-    t.boolean "persistent", default: false, null: false
-    t.string "dhcp_client_class", limit: 128
-    t.bigint "dhcp6_subnet_id"
-    t.integer "host_id"
-    t.integer "scope_id", limit: 2, null: false
-    t.text "user_context"
-    t.index ["host_id"], name: "fk_dhcp6_options_host1_idx"
-    t.index ["scope_id"], name: "fk_dhcp6_options_scope_idx"
-  end
-
-  create_table "dhcp_option_scope", primary_key: "scope_id", id: :integer, limit: 2, default: nil, force: :cascade do |t|
-    t.string "scope_name", limit: 32
-  end
-
   create_table "gateways", force: :cascade do |t|
     t.string "name", null: false
     t.inet "address", null: false
@@ -174,31 +140,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
     t.string "interface", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.inet "netmask", null: false
     t.index ["concentrator_id"], name: "index_gateways_on_concentrator_id"
-  end
-
-  create_table "host_identifier_type", primary_key: "type", id: :integer, limit: 2, default: nil, force: :cascade do |t|
-    t.string "name", limit: 32
-  end
-
-  create_table "hosts", primary_key: "host_id", id: :serial, force: :cascade do |t|
-    t.binary "dhcp_identifier", null: false
-    t.integer "dhcp_identifier_type", limit: 2, null: false
-    t.bigint "dhcp4_subnet_id"
-    t.bigint "dhcp6_subnet_id"
-    t.bigint "ipv4_address"
-    t.string "hostname", limit: 255
-    t.string "dhcp4_client_classes", limit: 255
-    t.string "dhcp6_client_classes", limit: 255
-    t.bigint "dhcp4_next_server"
-    t.string "dhcp4_server_hostname", limit: 64
-    t.string "dhcp4_boot_file_name", limit: 128
-    t.text "user_context"
-    t.string "auth_key", limit: 32
-    t.index ["dhcp_identifier", "dhcp_identifier_type", "dhcp4_subnet_id"], name: "key_dhcp4_identifier_subnet_id", unique: true, where: "((dhcp4_subnet_id IS NOT NULL) AND (dhcp4_subnet_id <> 0))"
-    t.index ["dhcp_identifier", "dhcp_identifier_type", "dhcp6_subnet_id"], name: "key_dhcp6_identifier_subnet_id", unique: true, where: "((dhcp6_subnet_id IS NOT NULL) AND (dhcp6_subnet_id <> 0))"
-    t.index ["dhcp_identifier_type"], name: "fk_host_identifier_type"
-    t.index ["ipv4_address", "dhcp4_subnet_id"], name: "key_dhcp4_ipv4_address_subnet_id", unique: true, where: "((ipv4_address IS NOT NULL) AND (ipv4_address <> 0))"
   end
 
   create_table "image_cashieros", force: :cascade do |t|
@@ -208,80 +151,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["cashiero_id"], name: "index_image_cashieros_on_cashiero_id"
-  end
-
-  create_table "ipv6_reservations", primary_key: "reservation_id", id: :serial, force: :cascade do |t|
-    t.string "address", limit: 39, null: false
-    t.integer "prefix_len", limit: 2, default: 128, null: false
-    t.integer "type", limit: 2, default: 0, null: false
-    t.integer "dhcp6_iaid"
-    t.integer "host_id", null: false
-    t.index ["address", "prefix_len"], name: "key_dhcp6_address_prefix_len", unique: true
-    t.index ["host_id"], name: "fk_ipv6_reservations_host_idx"
-  end
-
-  create_table "lease4", primary_key: "address", id: :bigint, default: nil, force: :cascade do |t|
-    t.binary "hwaddr"
-    t.binary "client_id"
-    t.bigint "valid_lifetime"
-    t.datetime "expire"
-    t.bigint "subnet_id"
-    t.boolean "fqdn_fwd"
-    t.boolean "fqdn_rev"
-    t.string "hostname", limit: 255
-    t.bigint "state", default: 0
-    t.text "user_context"
-    t.index ["client_id", "subnet_id"], name: "lease4_by_client_id_subnet_id"
-    t.index ["hwaddr", "subnet_id"], name: "lease4_by_hwaddr_subnet_id"
-    t.index ["state", "expire"], name: "lease4_by_state_expire"
-    t.index ["subnet_id"], name: "lease4_by_subnet_id"
-  end
-
-  create_table "lease4_stat", primary_key: ["subnet_id", "state"], force: :cascade do |t|
-    t.bigint "subnet_id", null: false
-    t.bigint "state", null: false
-    t.bigint "leases"
-  end
-
-  create_table "lease6", primary_key: "address", id: :string, limit: 39, force: :cascade do |t|
-    t.binary "duid"
-    t.bigint "valid_lifetime"
-    t.datetime "expire"
-    t.bigint "subnet_id"
-    t.bigint "pref_lifetime"
-    t.integer "lease_type", limit: 2
-    t.integer "iaid"
-    t.integer "prefix_len", limit: 2
-    t.boolean "fqdn_fwd"
-    t.boolean "fqdn_rev"
-    t.string "hostname", limit: 255
-    t.bigint "state", default: 0
-    t.binary "hwaddr"
-    t.integer "hwtype", limit: 2
-    t.integer "hwaddr_source", limit: 2
-    t.text "user_context"
-    t.index ["duid", "iaid", "subnet_id"], name: "lease6_by_duid_iaid_subnet_id"
-    t.index ["state", "expire"], name: "lease6_by_state_expire"
-    t.index ["subnet_id", "lease_type"], name: "lease6_by_subnet_id_lease_type"
-  end
-
-  create_table "lease6_stat", primary_key: ["subnet_id", "lease_type", "state"], force: :cascade do |t|
-    t.bigint "subnet_id", null: false
-    t.integer "lease_type", limit: 2, null: false
-    t.bigint "state", null: false
-    t.bigint "leases"
-  end
-
-  create_table "lease6_types", primary_key: "lease_type", id: :integer, limit: 2, default: nil, force: :cascade do |t|
-    t.string "name", limit: 5
-  end
-
-  create_table "lease_hwaddr_source", primary_key: "hwaddr_source", id: :integer, default: nil, force: :cascade do |t|
-    t.string "name", limit: 40
-  end
-
-  create_table "lease_state", primary_key: "state", id: :bigint, default: nil, force: :cascade do |t|
-    t.string "name", limit: 64, null: false
   end
 
   create_table "links", force: :cascade do |t|
@@ -296,14 +165,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
     t.bigint "plan_id", null: false
     t.index ["address_id"], name: "index_links_on_address_id"
     t.index ["plan_id"], name: "index_links_on_plan_id"
-  end
-
-  create_table "logs", id: false, force: :cascade do |t|
-    t.datetime "timestamp", default: -> { "CURRENT_TIMESTAMP" }
-    t.string "address", limit: 43
-    t.text "log", null: false
-    t.index ["address"], name: "address_id"
-    t.index ["timestamp"], name: "timestamp_id"
   end
 
   create_table "notable_jobs", force: :cascade do |t|
@@ -347,10 +208,6 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
     t.index ["name"], name: "index_plans_on_name", unique: true
   end
 
-  create_table "schema_version", primary_key: "version", id: :integer, default: nil, force: :cascade do |t|
-    t.integer "minor"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -384,17 +241,8 @@ ActiveRecord::Schema.define(version: 2019_08_22_180024) do
   add_foreign_key "cashieros", "categories"
   add_foreign_key "cashieros", "users"
   add_foreign_key "concentrators", "address_ranges"
-  add_foreign_key "dhcp4_options", "dhcp_option_scope", column: "scope_id", primary_key: "scope_id", name: "fk_dhcp4_option_scode", on_delete: :cascade
-  add_foreign_key "dhcp4_options", "hosts", primary_key: "host_id", name: "fk_options_host1", on_delete: :cascade
-  add_foreign_key "dhcp6_options", "dhcp_option_scope", column: "scope_id", primary_key: "scope_id", name: "fk_dhcp6_option_scode", on_delete: :cascade
-  add_foreign_key "dhcp6_options", "hosts", primary_key: "host_id", name: "fk_options_host10", on_delete: :cascade
   add_foreign_key "gateways", "concentrators"
-  add_foreign_key "hosts", "host_identifier_type", column: "dhcp_identifier_type", primary_key: "type", name: "fk_host_identifier_type", on_delete: :cascade
   add_foreign_key "image_cashieros", "cashieros"
-  add_foreign_key "ipv6_reservations", "hosts", primary_key: "host_id", name: "fk_ipv6_reservations_host", on_delete: :cascade
-  add_foreign_key "lease4", "lease_state", column: "state", primary_key: "state", name: "fk_lease4_state"
-  add_foreign_key "lease6", "lease6_types", column: "lease_type", primary_key: "lease_type", name: "fk_lease6_type"
-  add_foreign_key "lease6", "lease_state", column: "state", primary_key: "state", name: "fk_lease6_state"
   add_foreign_key "links", "addresses"
   add_foreign_key "links", "plans"
   add_foreign_key "plans", "address_ranges"

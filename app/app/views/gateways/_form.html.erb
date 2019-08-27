@@ -17,17 +17,23 @@
       <%= form.text_field :name, required: true %>
     </div>
 
-    <div class="field">
-      <%= form.label :address %>
-      <%= form.text_field :address, required: true %>
-    </div>
+    <div class="fields">
+      <div class="field">
+        <%= form.label :address %>
+        <%= form.text_field :address, required: true %>
+      </div>
 
-    <div class="field">
-      <%= form.label :interface %>
-      <%= form.select :interface, @concentrator.interfaces.each{ |k, v| [v, v]}, { include_blank: false }, class: 'ui search dropdown' %> 
-      <script type="text/javascript">
-        $('.ui.search.dropdown').dropdown();
-      </script>
+      <div class="field">
+        <%= form.label :netmask %>
+        <%= form.text_field :netmask, required: true %>
+      </div>
+      <div class="field">
+        <%= form.label :interface %>
+        <%= form.select :interface, @concentrator.interfaces.each{ |k, v| [v, v]}, { include_blank: false }, class: 'ui search dropdown' %> 
+        <script type="text/javascript">
+          $('.ui.search.dropdown').dropdown();
+        </script>
+      </div>
     </div>
 
     <div class="actions">

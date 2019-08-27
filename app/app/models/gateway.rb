@@ -6,6 +6,7 @@
 #  address         :inet             not null
 #  interface       :string           not null
 #  name            :string           not null
+#  netmask         :inet             not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #  concentrator_id :bigint(8)        not null
@@ -24,5 +25,6 @@ class Gateway < ApplicationRecord
 
   validates :address, presence: true
   validates :name, presence: true
+  validates :netmask, presence: true
   validates :interface, presence: true
 end
